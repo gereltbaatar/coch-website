@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Diamond } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="w-full min-h-screen bg-secondary pt-20 sm:pt-24">
+    <section className="w-full min-h-screen bg-secondary pt-5">
       <div className="max-w-[1536px] w-full mx-auto px-5 py-12 sm:py-16 lg:py-20">
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 xl:gap-16">
           {/* Left Section - Portrait */}
@@ -22,21 +21,21 @@ export const Hero = () => {
               <div className="absolute bottom-0 right-0 w-24 h-24 bg-main/20 rounded-full blur-2xl -z-10"></div>
 
               {/* Chat Message Bubble 1 */}
-              <div className="absolute bottom-8 right-4 sm:right-6 md:right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
+              <div className="absolute bottom-8 right-4 sm:left-6 md:left-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
                 <p className="text-sm text-gray-800">
                   Би хэрхэн өөрийгөө илүү сайн мэдэх вэ? 😓
                 </p>
               </div>
 
               {/* Chat Message Bubble 2 */}
-              <div className="absolute bottom-24 sm:bottom-28 right-4 sm:right-6 md:right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
+              <div className="absolute bottom-24 sm:bottom-28 right-4 sm:left-6 md:left-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
                 <p className="text-sm text-gray-800">
                   Коучинг хэр удаан үр дүн өгдөг вэ? 😅
                 </p>
               </div>
 
               {/* Chat Message Bubble 3 */}
-              <div className="absolute bottom-40 sm:bottom-48 left-4 sm:left-6 md:left-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
+              <div className="absolute bottom-40 sm:bottom-44 left-4 sm:left-6 md:left-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
                 <p className="text-sm text-gray-800">
                   Энэ миний хувьд тохирох уу? 😐
                 </p>
@@ -45,29 +44,28 @@ export const Hero = () => {
           </div>
 
           {/* Right Section - Content */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6 sm:space-y-8">
+          <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-8 sm:space-y-10">
             {/* Title */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif text-[#3a3a3a] leading-tight">
-              Helping you uncover
-              <br />
-              <span className="text-main">the power within</span>
-            </h1>
-
-            {/* Divider with Diamonds */}
-            <div className="flex items-center gap-2 py-2">
-              <Diamond className="w-3 h-3 text-main fill-main" />
-              <div className="flex-1 h-px bg-main/30"></div>
-              <Diamond className="w-3 h-3 text-main fill-main" />
+            <div className="space-y-3">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-[#2a2a2a] leading-[1.1]">
+                Helping you uncover
+              </h1>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight leading-[1.1]">
+                <span className="text-main italic">the power within</span>
+              </h1>
             </div>
 
+            {/* Minimalist Divider */}
+            <div className="w-16 h-px bg-main/40"></div>
+
             {/* Description */}
-            <div className="space-y-4 text-[#3a3a3a] text-base sm:text-lg leading-relaxed max-w-2xl">
-              <p>
-                <span className="font-semibold text-main">Uyanga</span> is an
+            <div className="space-y-6 text-[#4a4a4a] text-base sm:text-lg leading-relaxed max-w-xl">
+              <p className="font-light">
+                <span className="font-medium text-main">Uyanga</span> is an
                 ICF-trained coach, public speaker, and guide in emotional
                 intelligence and spiritual growth.
               </p>
-              <p>
+              <p className="font-light">
                 Through her own transformative journey, she discovered the
                 profound impact of self-awareness and inner work. Now, she
                 dedicates herself to helping individuals uncover their true
@@ -77,12 +75,15 @@ export const Hero = () => {
             </div>
 
             {/* CTA Button */}
-            <div className="pt-4">
+            <div className="pt-2">
               <Link
                 href="/contact"
-                className="inline-block bg-main hover:bg-main/90 text-white font-semibold text-sm sm:text-base uppercase tracking-wider px-8 sm:px-10 py-3 sm:py-4 rounded-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-3 bg-main hover:bg-main/90 text-white font-light text-sm sm:text-base tracking-wide px-10 sm:px-12 py-4 sm:py-5 rounded-full transition-all duration-300 cursor-pointer shadow-md hover:shadow-xl transform hover:-translate-y-0.5"
               >
                 Book Now
+                <span className="transform group-hover:translate-x-1 transition-transform duration-300">
+                  →
+                </span>
               </Link>
             </div>
           </div>
