@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Diamond } from "lucide-react";
+import { Diamond, User, Send } from "lucide-react";
 
 export const Hero = () => {
   return (
@@ -20,6 +20,20 @@ export const Hero = () => {
 
               {/* Decorative element */}
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-main/20 rounded-full blur-2xl -z-10"></div>
+
+              {/* Write to us / Administrator Card */}
+              <div className="absolute bottom-8 left-4 sm:left-6 md:left-8 bg-white rounded-2xl border border-gray-200 px-4 py-3 shadow-lg flex items-center gap-3 cursor-pointer hover:shadow-xl transition-all duration-300 z-10">
+                <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
+                  <User className="w-5 h-5 text-gray-600" />
+                </div>
+                <Send className="w-4 h-4 text-gray-500 shrink-0" />
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-gray-800">
+                    Напишите нам
+                  </span>
+                  <span className="text-xs text-gray-500">Администратор</span>
+                </div>
+              </div>
             </div>
           </div>
 
