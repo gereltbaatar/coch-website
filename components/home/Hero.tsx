@@ -22,22 +22,24 @@ export const Hero = () => {
               <div className="absolute bottom-0 right-0 w-24 h-24 bg-main/20 rounded-full blur-2xl -z-10"></div>
 
               {/* Chat Message Bubble 1 */}
-              <div className="absolute top-8 right-4 sm:right-6 md:right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
+              <div className="absolute bottom-8 right-4 sm:right-6 md:right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
                 <p className="text-sm text-gray-800">
-                  Миний захиалга хэзээ эхлэх бол? 😓
+                  Би хэрхэн өөрийгөө илүү сайн мэдэх вэ? 😓
                 </p>
               </div>
 
               {/* Chat Message Bubble 2 */}
-              <div className="absolute top-24 sm:top-28 right-4 sm:right-6 md:right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
+              <div className="absolute bottom-24 sm:bottom-28 right-4 sm:right-6 md:right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
                 <p className="text-sm text-gray-800">
-                  Захиалга өгсны дараа дунджаар хэр хурдан биелэгддэг вэ? 😅
+                  Коучинг хэр удаан үр дүн өгдөг вэ? 😅
                 </p>
               </div>
 
               {/* Chat Message Bubble 3 */}
-              <div className="absolute top-40 sm:top-48 right-4 sm:right-6 md:right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
-                <p className="text-sm text-gray-800">Үнэн юм уу? 😐</p>
+              <div className="absolute bottom-40 sm:bottom-48 left-4 sm:left-6 md:left-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10">
+                <p className="text-sm text-gray-800">
+                  Энэ миний хувьд тохирох уу? 😐
+                </p>
               </div>
             </div>
           </div>
@@ -46,9 +48,9 @@ export const Hero = () => {
           <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6 sm:space-y-8">
             {/* Title */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif text-[#3a3a3a] leading-tight">
-              Helping you uncover
+              Асуулт байна уу?
               <br />
-              <span className="text-main">the power within</span>
+              <span className="text-main">Хамтдаа шийдэл олъё</span>
             </h1>
 
             {/* Divider with Diamonds */}
@@ -61,16 +63,15 @@ export const Hero = () => {
             {/* Description */}
             <div className="space-y-4 text-[#3a3a3a] text-base sm:text-lg leading-relaxed max-w-2xl">
               <p>
-                <span className="font-semibold text-main">Uyanga</span> is an
-                ICF-trained coach, public speaker, and guide in emotional
-                intelligence and spiritual growth.
+                <span className="font-semibold text-main">Uyanga</span> бол ICF
+                мэргэжлийн коуч, илтгэгч, мөн сэтгэл санааны ухаан болон сүнслэг
+                хөгжлийн чиглүүлэгч юм.
               </p>
               <p>
-                Through her own transformative journey, she discovered the
-                profound impact of self-awareness and inner work. Now, she
-                dedicates herself to helping individuals uncover their true
-                selves, navigate life&apos;s challenges with grace, and step
-                into their fullest potential.
+                Өөрийн хувирлын аялалаар дамжин, тэрээр өөрийгөө мэдэх мэдлэг
+                болон дотоод ажлын гүн нөлөөг олж мэдсэн. Одоо тэрээр хүмүүст
+                жинхэнэ өөрийгөө нээх, амьдралын бэрхшээлүүдийг гоё байдлаар
+                даван туулах, бүрэн боломжоо ашиглахад туслахад зориулж байна.
               </p>
             </div>
 
@@ -80,7 +81,7 @@ export const Hero = () => {
                 href="/contact"
                 className="inline-block bg-main hover:bg-main/90 text-white font-semibold text-sm sm:text-base uppercase tracking-wider px-8 sm:px-10 py-3 sm:py-4 rounded-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
-                Book Now
+                Захиалга өгөх
               </Link>
             </div>
           </div>
