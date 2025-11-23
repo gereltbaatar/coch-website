@@ -47,10 +47,10 @@ export const Hero = () => {
           <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-8 sm:space-y-10">
             {/* Title */}
             <div className="space-y-3">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight text-[#2a2a2a] leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-[#2a2a2a] leading-[1.1]">
                 Helping you uncover
               </h1>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight leading-[1.1]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight leading-[1.1]">
                 <span className="text-main italic">the power within</span>
               </h1>
             </div>
