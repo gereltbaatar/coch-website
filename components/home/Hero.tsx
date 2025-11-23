@@ -21,6 +21,13 @@ export const Hero = () => {
               {/* Decorative element */}
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-main/20 rounded-full blur-2xl -z-10"></div>
 
+              {/* Chat Message Bubble 1 */}
+              <div className="absolute top-8 right-4 sm:right-6 md:right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10 animate-fade-in">
+                <p className="text-sm text-gray-800">
+                  Миний захиалга хэзээ эхлэх бол? 😓
+                </p>
+              </div>
+
               {/* Write to us / Administrator Card */}
               <Link
                 href="/contact"
