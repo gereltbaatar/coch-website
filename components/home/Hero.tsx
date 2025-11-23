@@ -35,6 +35,13 @@ export const Hero = () => {
                 </p>
               </div>
 
+              {/* Chat Message Bubble 3 */}
+              <div className="absolute top-40 sm:top-48 right-4 sm:right-6 md:right-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[280px] sm:max-w-[320px] z-10 animate-fade-in delay-200">
+                <p className="text-sm text-gray-800">
+                  Үнэн юм уу? 😐
+                </p>
+              </div>
+
               {/* Write to us / Administrator Card */}
               <Link
                 href="/contact"
