@@ -48,9 +48,9 @@ export const Hero = () => {
           <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6 sm:space-y-8">
             {/* Title */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif text-[#3a3a3a] leading-tight">
-              Асуулт байна уу?
+              Helping you uncover
               <br />
-              <span className="text-main">Хамтдаа шийдэл олъё</span>
+              <span className="text-main">the power within</span>
             </h1>
 
             {/* Divider with Diamonds */}
@@ -63,15 +63,16 @@ export const Hero = () => {
             {/* Description */}
             <div className="space-y-4 text-[#3a3a3a] text-base sm:text-lg leading-relaxed max-w-2xl">
               <p>
-                <span className="font-semibold text-main">Uyanga</span> бол ICF
-                мэргэжлийн коуч, илтгэгч, мөн сэтгэл санааны ухаан болон сүнслэг
-                хөгжлийн чиглүүлэгч юм.
+                <span className="font-semibold text-main">Uyanga</span> is an
+                ICF-trained coach, public speaker, and guide in emotional
+                intelligence and spiritual growth.
               </p>
               <p>
-                Өөрийн хувирлын аялалаар дамжин, тэрээр өөрийгөө мэдэх мэдлэг
-                болон дотоод ажлын гүн нөлөөг олж мэдсэн. Одоо тэрээр хүмүүст
-                жинхэнэ өөрийгөө нээх, амьдралын бэрхшээлүүдийг гоё байдлаар
-                даван туулах, бүрэн боломжоо ашиглахад туслахад зориулж байна.
+                Through her own transformative journey, she discovered the
+                profound impact of self-awareness and inner work. Now, she
+                dedicates herself to helping individuals uncover their true
+                selves, navigate life&apos;s challenges with grace, and step
+                into their fullest potential.
               </p>
             </div>
 
@@ -81,7 +82,7 @@ export const Hero = () => {
                 href="/contact"
                 className="inline-block bg-main hover:bg-main/90 text-white font-semibold text-sm sm:text-base uppercase tracking-wider px-8 sm:px-10 py-3 sm:py-4 rounded-lg transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
               >
-                Захиалга өгөх
+                Book Now
               </Link>
             </div>
           </div>
