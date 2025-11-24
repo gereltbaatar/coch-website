@@ -1,11 +1,15 @@
 import { Header } from "@/components/navigation";
-import { Hero } from "@/components/home";
+import { Hero, Sub, AboutMe, WhyTrustMe } from "@/components/home";
+
 
 const HomePage = () => {
   return (
     <div>
       <Header />
       <Hero />
+      <AboutMe />
+      <WhyTrustMe />
+      <Sub />
     </div>
   );
 };
