@@ -14,6 +14,12 @@ export const SuccessStories = () => {
                     </div>
 
                     <div className="relative w-full overflow-hidden group">
+                        {/* Left Fade */}
+                        <div className="absolute top-0 left-0 h-full w-16 sm:w-24 md:w-32 bg-linear-to-r from-secondary to-transparent z-10 pointer-events-none" />
+
+                        {/* Right Fade */}
+                        <div className="absolute top-0 right-0 h-full w-16 sm:w-24 md:w-32 bg-linear-to-l from-secondary to-transparent z-10 pointer-events-none" />
+
                         <div className="flex gap-6 animate-scroll">
                             {/* First set of cards */}
                             {SuccessStoriesData.map((story) => (

@@ -148,3 +148,30 @@ export const SuccessStoriesData: SuccessStory[] = [
         testimonial: "This coaching journey helped me build genuine self-trust. I now make decisions confidently and honor my own needs."
     }
 ]
+
+export const BlogPostsData = [
+    {
+        id: 1,
+        title: "The Power of Mindfulness in Daily Life",
+        category: "Wellness",
+        date: "Dec 5, 2025",
+        image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1999&auto=format&fit=crop",
+        readTime: "5 min read"
+    },
+    {
+        id: 2,
+        title: "Building Resilience Through Self-Care",
+        category: "Personal Growth",
+        date: "Dec 2, 2025",
+        image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2000&auto=format&fit=crop",
+        readTime: "4 min read"
+    },
+    {
+        id: 3,
+        title: "Understanding Emotional Intelligence",
+        category: "Psychology",
+        date: "Nov 28, 2025",
+        image: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?q=80&w=2053&auto=format&fit=crop",
+        readTime: "6 min read"
+    }
+]
