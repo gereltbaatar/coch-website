@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BlogPostsData } from "../mock/MockDatas";
 import { BlogPostCard } from "../blog";
 
@@ -14,9 +15,18 @@ export const Blog = () => {
                         </div>
 
                         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                            {BlogPostsData.map((post) => (
+                            {BlogPostsData.slice(0, 6).map((post) => (
                                 <BlogPostCard key={post.id} post={post} />
                             ))}
+                        </div>
+
+                        <div className="flex justify-center w-full">
+                            <Link
+                                href="/blogs"
+                                className="px-8 py-3 rounded-full border border-secondary text-secondary font-medium hover:bg-secondary hover:text-main transition-all duration-300"
+                            >
+                                See All Posts
+                            </Link>
                         </div>
                     </div>
                 </div>

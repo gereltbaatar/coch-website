@@ -173,5 +173,77 @@ export const BlogPostsData = [
         date: "Nov 28, 2025",
         image: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?q=80&w=2053&auto=format&fit=crop",
         readTime: "6 min read"
+    },
+    {
+        id: 4,
+        title: "Morning Rituals for a Peaceful Mind",
+        category: "Mindfulness",
+        date: "Nov 25, 2025",
+        image: "https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=2064&auto=format&fit=crop",
+        readTime: "4 min read"
+    },
+    {
+        id: 5,
+        title: "How to Set Healthy Boundaries",
+        category: "Relationships",
+        date: "Nov 22, 2025",
+        image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2089&auto=format&fit=crop",
+        readTime: "7 min read"
+    },
+    {
+        id: 6,
+        title: "The Science of Gratitude",
+        category: "Psychology",
+        date: "Nov 18, 2025",
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
+        readTime: "5 min read"
+    },
+    {
+        id: 7,
+        title: "Overcoming Self-Doubt and Fear",
+        category: "Personal Growth",
+        date: "Nov 15, 2025",
+        image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=2064&auto=format&fit=crop",
+        readTime: "6 min read"
+    },
+    {
+        id: 8,
+        title: "Nutrition and Mental Wellness",
+        category: "Wellness",
+        date: "Nov 12, 2025",
+        image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop",
+        readTime: "5 min read"
+    },
+    {
+        id: 9,
+        title: "The Art of Deep Breathing",
+        category: "Mindfulness",
+        date: "Nov 8, 2025",
+        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2020&auto=format&fit=crop",
+        readTime: "3 min read"
+    },
+    {
+        id: 10,
+        title: "Communication in Relationships",
+        category: "Relationships",
+        date: "Nov 5, 2025",
+        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop",
+        readTime: "6 min read"
+    },
+    {
+        id: 11,
+        title: "Finding Your Life Purpose",
+        category: "Personal Growth",
+        date: "Nov 1, 2025",
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070&auto=format&fit=crop",
+        readTime: "8 min read"
+    },
+    {
+        id: 12,
+        title: "Sleep and Its Impact on Wellbeing",
+        category: "Wellness",
+        date: "Oct 28, 2025",
+        image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=2060&auto=format&fit=crop",
+        readTime: "5 min read"
     }
 ]

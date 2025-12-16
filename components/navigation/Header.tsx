@@ -5,7 +5,7 @@ export const Header = () => {
   const navItems = [
     { label: "About me", href: "/about" },
     { label: "Services", href: "/services" },
-    { label: "Blog", href: "/blog" },
+    { label: "Blog", href: "/blogs" },
     { label: "Free", href: "/free" },
   ];
 

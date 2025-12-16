@@ -8,3 +8,4 @@ export * from "./WorkProgram";
 export * from "./SuccessStories";
 export * from "./SuccessStoriesCard";
 export * from "./Blog";
+export * from "./Contact";

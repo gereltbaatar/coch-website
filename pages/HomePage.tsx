@@ -1,5 +1,5 @@
 import { Header } from "@/components/navigation";
-import { Hero, Sub, AboutMe, WhyTrustMe, WorkTogether, SuccessStories, Blog } from "@/components/home";
+import { Hero, Sub, AboutMe, WhyTrustMe, WorkTogether, SuccessStories, Blog, Contact } from "@/components/home";
 
 
 const HomePage = () => {
@@ -12,6 +12,7 @@ const HomePage = () => {
       <WorkTogether />
       <SuccessStories />
       <Blog />
+      <Contact />
       <Sub />
     </>
   );
