@@ -1,10 +1,13 @@
-import { Header } from "@/components/navigation"
+import { Header, Footer } from "@/components/navigation"
+import { FreeHero, ProductList } from "@/components/free"
 
 const FreePage = () => {
     return (
-        <div>
-            <Header />
-        </div>
+        <main className="min-h-screen bg-white">
+            <FreeHero />
+            <ProductList />
+            <Footer />
+        </main>
     )
 }
 

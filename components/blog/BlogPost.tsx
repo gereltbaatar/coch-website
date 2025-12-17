@@ -1,4 +1,4 @@
-export const BlogPost = () => {
+export const BlogSection = () => {
     return (
         <section className="bg-secondary w-full min-h-fit overflow-hidden">
             <div className="w-full max-w-[1536px] mx-auto pb-12 sm:pb-16 lg:pb-24">

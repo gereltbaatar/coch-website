@@ -1,16 +1,51 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export const Header = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show if near the top to avoid glitching
+      if (currentScrollY < 50) {
+        setIsVisible(true);
+        setLastScrollY(currentScrollY);
+        return;
+      }
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setIsVisible(false);
+      } else {
+        // Scrolling up
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   const navItems = [
-    { label: "About me", href: "/about" },
+    { label: "About me", href: "/#about" }, // Assuming about is on homepage based on previous context, adjusted href just in case or keep as is if separate page
     { label: "Services", href: "/services" },
     { label: "Blog", href: "/blogs" },
     { label: "Free", href: "/free" },
   ];
 
   return (
-    <div className="w-full bg-main fixed top-0 left-0 right-0 z-50">
+    <div
+      className={`w-full bg-main fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'
+        }`}
+    >
       <div className="max-w-[1536px] w-full mx-auto px-5 py-3 flex items-center justify-between">
         <nav className="flex items-center gap-2 sm:gap-4">
           <Link href="/" className="cursor-pointer mr-0 sm:mr-10">

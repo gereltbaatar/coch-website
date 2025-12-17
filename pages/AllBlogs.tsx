@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import { BlogPostsData } from "@/components/mock/MockDatas"
-import { BlogPostCard } from "@/components/blog"
-import { Header } from "@/components/navigation/Header"
+import { BlogPostCard, BlogHero } from "@/components/blog"
+import { Footer } from "@/components/navigation"
 
 const categories = ["All", "Wellness", "Personal Growth", "Psychology", "Mindfulness", "Relationships"]
 
@@ -16,19 +16,7 @@ const AllBlogs = () => {
 
     return (
         <main className="bg-secondary min-h-screen">
-            <Header />
-
-            {/* Hero Section */}
-            <section className="w-full pt-32 pb-16 px-4 sm:px-6">
-                <div className="max-w-[1536px] mx-auto text-center">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-main tracking-wide">
-                        Blog <span className="font-medium">Posts</span>
-                    </h1>
-                    <p className="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-                        Discover insights, tips, and stories about personal growth, wellness, and living your best life.
-                    </p>
-                </div>
-            </section>
+            <BlogHero />
 
             {/* Category Filter */}
             <section className="w-full px-4 sm:px-6 pb-8">
@@ -38,11 +26,10 @@ const AllBlogs = () => {
                             <button
                                 key={category}
                                 onClick={() => setSelectedCategory(category)}
-                                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                                    selectedCategory === category
-                                        ? "bg-main text-secondary"
-                                        : "bg-white border border-gray-200 text-gray-600 hover:border-main hover:text-main"
-                                }`}
+                                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedCategory === category
+                                    ? "bg-main text-secondary"
+                                    : "bg-white border border-gray-200 text-gray-600 hover:border-main hover:text-main"
+                                    }`}
                             >
                                 {category}
                             </button>
@@ -71,6 +58,7 @@ const AllBlogs = () => {
                     </div>
                 </div>
             </section>
+            <Footer />
         </main>
     )
 }
