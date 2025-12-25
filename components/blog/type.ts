@@ -4,5 +4,7 @@ export interface BlogPost {
     category: string;
     date: string;
     image: string;
+    hoverImage?: string;
     readTime: string;
+    excerpt: string;
 }

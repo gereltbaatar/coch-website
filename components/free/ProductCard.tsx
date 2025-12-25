@@ -12,9 +12,9 @@ interface ProductCardProps {
 
 export const ProductCard = ({ image, title, price, originalPrice, tag }: ProductCardProps) => {
     return (
-        <div className="group flex flex-col items-center">
+        <div className="group flex flex-col items-center rounded-3xl">
             {/* Image Container */}
-            <div className="w-full aspect-square bg-[#FAFAFA] relative mb-6 overflow-hidden flex items-center justify-center">
+            <div className="w-full aspect-square rounded-3xl bg-[#FAFAFA] relative mb-6 overflow-hidden flex items-center justify-center">
                 {/* Tag */}
                 {tag && (
                     <span className="absolute top-4 right-4 text-[10px] font-medium tracking-[0.2em] text-black/40">
@@ -23,7 +23,7 @@ export const ProductCard = ({ image, title, price, originalPrice, tag }: Product
                 )}
 
                 {/* Image */}
-                <div className="relative w-3/4 h-3/4 transition-transform duration-500 group-hover:scale-105">
+                <div className="relative rounded-3xl w-full h-full transition-transform duration-500 group-hover:scale-105">
                     <Image
                         src={image}
                         alt={title}
@@ -35,10 +35,10 @@ export const ProductCard = ({ image, title, price, originalPrice, tag }: Product
                 {/* Overlay with Chat Button */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
                     <Link
-                        href="/contact"
+                        href="/product"
                         className="bg-white text-black px-6 py-3 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg"
                     >
-                        <span className="text-xs font-medium tracking-widest uppercase">Chat to Order</span>
+                        <span className="text-xs font-medium tracking-widest uppercase">To details</span>
                         <MoveRight className="w-3 h-3" />
                     </Link>
                 </div>

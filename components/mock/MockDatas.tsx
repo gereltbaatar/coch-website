@@ -156,7 +156,8 @@ export const BlogPostsData = [
         category: "Wellness",
         date: "Dec 5, 2025",
         image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1999&auto=format&fit=crop",
-        readTime: "5 min read"
+        readTime: "5 min read",
+        excerpt: "Discover how simple mindfulness practices can transform your daily routine and bring peace to your everyday moments."
     },
     {
         id: 2,
@@ -164,7 +165,8 @@ export const BlogPostsData = [
         category: "Personal Growth",
         date: "Dec 2, 2025",
         image: "https://images.unsplash.com/photo-1499209974431-9dddcece7f88?q=80&w=2000&auto=format&fit=crop",
-        readTime: "4 min read"
+        readTime: "4 min read",
+        excerpt: "Learn practical self-care strategies that build lasting resilience and help you navigate life's challenges with grace."
     },
     {
         id: 3,
@@ -172,7 +174,8 @@ export const BlogPostsData = [
         category: "Psychology",
         date: "Nov 28, 2025",
         image: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?q=80&w=2053&auto=format&fit=crop",
-        readTime: "6 min read"
+        readTime: "6 min read",
+        excerpt: "Explore the key components of emotional intelligence and how developing EQ can enhance your relationships and career."
     },
     {
         id: 4,
@@ -180,7 +183,8 @@ export const BlogPostsData = [
         category: "Mindfulness",
         date: "Nov 25, 2025",
         image: "https://images.unsplash.com/photo-1545389336-cf090694435e?q=80&w=2064&auto=format&fit=crop",
-        readTime: "4 min read"
+        readTime: "4 min read",
+        excerpt: "Start your day with intention using these calming morning rituals designed to set a positive tone for your entire day."
     },
     {
         id: 5,
@@ -188,7 +192,8 @@ export const BlogPostsData = [
         category: "Relationships",
         date: "Nov 22, 2025",
         image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2089&auto=format&fit=crop",
-        readTime: "7 min read"
+        readTime: "7 min read",
+        excerpt: "Master the art of setting healthy boundaries in your personal and professional life without guilt or conflict."
     },
     {
         id: 6,
@@ -196,7 +201,8 @@ export const BlogPostsData = [
         category: "Psychology",
         date: "Nov 18, 2025",
         image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop",
-        readTime: "5 min read"
+        readTime: "5 min read",
+        excerpt: "Uncover the research-backed benefits of gratitude and simple practices to cultivate thankfulness in your daily life."
     },
     {
         id: 7,
@@ -204,7 +210,8 @@ export const BlogPostsData = [
         category: "Personal Growth",
         date: "Nov 15, 2025",
         image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=2064&auto=format&fit=crop",
-        readTime: "6 min read"
+        readTime: "6 min read",
+        excerpt: "Break free from the chains of self-doubt and fear with proven techniques to build unshakeable confidence."
     },
     {
         id: 8,
@@ -212,7 +219,8 @@ export const BlogPostsData = [
         category: "Wellness",
         date: "Nov 12, 2025",
         image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=2053&auto=format&fit=crop",
-        readTime: "5 min read"
+        readTime: "5 min read",
+        excerpt: "Understand the powerful connection between what you eat and how you feel, plus foods that boost mental clarity."
     },
     {
         id: 9,
@@ -220,7 +228,8 @@ export const BlogPostsData = [
         category: "Mindfulness",
         date: "Nov 8, 2025",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2020&auto=format&fit=crop",
-        readTime: "3 min read"
+        readTime: "3 min read",
+        excerpt: "Harness the power of your breath with simple techniques that reduce stress and promote relaxation instantly."
     },
     {
         id: 10,
@@ -228,7 +237,8 @@ export const BlogPostsData = [
         category: "Relationships",
         date: "Nov 5, 2025",
         image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop",
-        readTime: "6 min read"
+        readTime: "6 min read",
+        excerpt: "Improve your relationships through effective communication strategies that foster understanding and connection."
     },
     {
         id: 11,
@@ -236,7 +246,8 @@ export const BlogPostsData = [
         category: "Personal Growth",
         date: "Nov 1, 2025",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=2070&auto=format&fit=crop",
-        readTime: "8 min read"
+        readTime: "8 min read",
+        excerpt: "Embark on a journey of self-discovery to uncover your unique purpose and live a more meaningful, fulfilling life."
     },
     {
         id: 12,
@@ -244,6 +255,7 @@ export const BlogPostsData = [
         category: "Wellness",
         date: "Oct 28, 2025",
         image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=2060&auto=format&fit=crop",
-        readTime: "5 min read"
+        readTime: "5 min read",
+        excerpt: "Discover why quality sleep is essential for your mental and physical health, plus tips for better rest tonight."
     }
 ]

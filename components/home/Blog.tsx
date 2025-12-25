@@ -1,8 +1,36 @@
-import Link from "next/link";
-import { BlogPostsData } from "../mock/MockDatas";
-import { BlogPostCard } from "../blog";
+"use client"
+
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { BlogPostCard } from "../blog"
+import { supabase, Blog as BlogType } from "@/lib/supabase"
 
 export const Blog = () => {
+    const [blogs, setBlogs] = useState<BlogType[]>([])
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        fetchBlogs()
+    }, [])
+
+    const fetchBlogs = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('blogs')
+                .select('*')
+                .eq('status', 'published')
+                .order('created_at', { ascending: false })
+                .limit(6)
+
+            if (error) throw error
+            setBlogs(data || [])
+        } catch (error) {
+            console.error("Failed to fetch blogs:", error)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     return (
         <section className="bg-secondary w-full min-h-fit overflow-hidden">
             <div className="w-full max-w-[1536px] mx-auto pb-12 sm:pb-16 lg:pb-24">
@@ -15,9 +43,19 @@ export const Blog = () => {
                         </div>
 
                         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                            {BlogPostsData.slice(0, 6).map((post) => (
-                                <BlogPostCard key={post.id} post={post} />
-                            ))}
+                            {isLoading ? (
+                                <div className="col-span-full flex justify-center py-12">
+                                    <div className="animate-spin w-8 h-8 border-2 border-secondary border-t-transparent rounded-full" />
+                                </div>
+                            ) : blogs.length > 0 ? (
+                                blogs.map((blog) => (
+                                    <BlogPostCard key={blog.id} blog={blog} />
+                                ))
+                            ) : (
+                                <div className="col-span-full text-center py-12 text-secondary/60">
+                                    Одоогоор нийтлэл байхгүй байна
+                                </div>
+                            )}
                         </div>
 
                         <div className="flex justify-center w-full">

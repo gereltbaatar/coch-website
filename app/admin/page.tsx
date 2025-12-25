@@ -1,5 +1,5 @@
-import AdminHomePage from "@/pages/AdminHomePage";
+import { redirect } from "next/navigation"
 
 export default function Admin() {
-    return <AdminHomePage />
+    redirect("/admin/blog")
 }

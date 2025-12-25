@@ -60,7 +60,7 @@ export const ContactInfo = () => {
                         const Icon = item.icon;
                         const CardContent = (
                             <>
-                                <div className="w-12 h-12 bg-main rounded-full flex items-center justify-center flex-shrink-0">
+                                <div className="w-12 h-12 bg-main rounded-full flex items-center justify-center shrink-0">
                                     <Icon className="w-5 h-5 text-secondary" />
                                 </div>
                                 <div>
@@ -93,7 +93,6 @@ export const ContactInfo = () => {
                     })}
                 </div>
 
-                {/* Social Links */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {socialLinks.map((social) => (
                         <a

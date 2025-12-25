@@ -53,23 +53,17 @@ export const ProductList = () => {
             <div className="flex flex-col sm:flex-row justify-between items-center mb-12 border-b border-black/5 pb-6 gap-4">
                 <div className="flex items-center gap-6">
                     <button className="text-xs font-semibold tracking-widest text-black hover:text-black/60 transition-colors uppercase">
-                        Show Sidebar
-                    </button>
-                    <div className="h-4 w-px bg-black/10"></div>
-                    <button className="text-black hover:text-black/60 transition-colors">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="18" height="2" transform="matrix(1 0 0 -1 0 10)" fill="currentColor" />
-                            <rect width="18" height="2" transform="matrix(1 0 0 -1 0 5)" fill="currentColor" />
-                            <rect width="18" height="2" transform="matrix(1 0 0 -1 0 15)" fill="currentColor" />
-                        </svg>
-                    </button>
-                    <button className="text-black hover:text-black/60 transition-colors">
-                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="8" height="8" rx="1" fill="currentColor" />
-                            <rect x="10" width="8" height="8" rx="1" fill="currentColor" />
-                            <rect y="10" width="8" height="8" rx="1" fill="currentColor" />
-                            <rect x="10" y="10" width="8" height="8" rx="1" fill="currentColor" />
-                        </svg>
+                        <div className="flex items-center gap-3">
+                            <p className="text-2xl font-semibold text-gray-800">All Products</p>
+                            <svg
+                                className="w-6 h-6 text-gray-800"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" transform="rotate(45 12 12)" />
+                            </svg>
+                        </div>
                     </button>
                 </div>
 
@@ -79,7 +73,7 @@ export const ProductList = () => {
             </div>
 
             {/* Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
                 {products.map((product) => (
                     <ProductCard
                         key={product.id}
