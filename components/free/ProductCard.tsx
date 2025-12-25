@@ -1,23 +1,23 @@
-import Image from "next/image";
-import Link from "next/link";
-import { MoveRight } from "lucide-react";
+import Image from "next/image"
+import { MoveRight } from "lucide-react"
 
 interface ProductCardProps {
-    image: string;
-    title: string;
-    price: string;
-    originalPrice?: string;
-    tag?: "HOT" | "SALE" | "NEW";
+    image: string
+    title: string
+    price: string
+    originalPrice?: string
+    tag?: "HOT" | "SALE" | "NEW"
+    onDetailClick?: () => void
 }
 
-export const ProductCard = ({ image, title, price, originalPrice, tag }: ProductCardProps) => {
+export const ProductCard = ({ image, title, price, originalPrice, tag, onDetailClick }: ProductCardProps) => {
     return (
         <div className="group flex flex-col items-center rounded-3xl">
             {/* Image Container */}
             <div className="w-full aspect-square rounded-3xl bg-[#FAFAFA] relative mb-6 overflow-hidden flex items-center justify-center">
                 {/* Tag */}
                 {tag && (
-                    <span className="absolute top-4 right-4 text-[10px] font-medium tracking-[0.2em] text-black/40">
+                    <span className={`absolute top-4 right-4 text-[10px] font-medium tracking-[0.2em] ${tag === 'SALE' ? 'text-red-500' : 'text-black/40'}`}>
                         {tag}
                     </span>
                 )}
@@ -28,19 +28,19 @@ export const ProductCard = ({ image, title, price, originalPrice, tag }: Product
                         src={image}
                         alt={title}
                         fill
-                        className="object-contain"
+                        className="object-cover"
                     />
                 </div>
 
-                {/* Overlay with Chat Button */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <Link
-                        href="/product"
-                        className="bg-white text-black px-6 py-3 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg"
+                {/* Overlay with Buttons */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100">
+                    <button
+                        onClick={onDetailClick}
+                        className="bg-white text-black px-4 py-3 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg"
                     >
-                        <span className="text-xs font-medium tracking-widest uppercase">To details</span>
+                        <span className="text-xs font-medium tracking-widest uppercase">Дэлгэрэнгүй</span>
                         <MoveRight className="w-3 h-3" />
-                    </Link>
+                    </button>
                 </div>
             </div>
 
@@ -50,7 +50,7 @@ export const ProductCard = ({ image, title, price, originalPrice, tag }: Product
                     {title}
                 </h3>
                 <div className="flex items-center justify-center gap-3">
-                    <span className="text-sm font-light text-black tracking-wider">
+                    <span className={`text-sm font-light tracking-wider ${originalPrice ? 'text-red-500' : 'text-black'}`}>
                         {price}
                     </span>
                     {originalPrice && (
@@ -61,5 +61,5 @@ export const ProductCard = ({ image, title, price, originalPrice, tag }: Product
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}

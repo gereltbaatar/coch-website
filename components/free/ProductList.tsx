@@ -1,51 +1,49 @@
-import { ProductCard } from "./ProductCard";
+"use client"
 
-const products = [
-    {
-        id: 1,
-        title: "Ceramic Vase",
-        price: "$ 89.00",
-        image: "/Product1.png",
-        tag: "HOT" as const
-    },
-    {
-        id: 2,
-        title: "Geometric Clock",
-        price: "$ 129.00",
-        originalPrice: "$ 149.00",
-        image: "/Product2.png",
-        tag: "SALE" as const
-    },
-    {
-        id: 3,
-        title: "Concrete Planter",
-        price: "$ 59.00",
-        image: "/Product3.png",
-    },
-    {
-        id: 4,
-        title: "Minimalist Lamp",
-        price: "$ 199.00",
-        image: "/Product1.png", // Reusing for demo
-    },
-    {
-        id: 5,
-        title: "Desk Organizer",
-        price: "$ 45.00",
-        image: "/Product2.png", // Reusing for demo
-        tag: "NEW" as const
-    },
-    {
-        id: 6,
-        title: "Wall Art Frame",
-        price: "$ 79.00",
-        originalPrice: "$ 99.00",
-        image: "/Product3.png", // Reusing for demo
-        tag: "SALE" as const
-    }
-];
+import { useEffect, useState } from "react"
+import { ProductCard } from "./ProductCard"
+import { ProductDetailDialog } from "./ProductDetailDialog"
+import { supabase, Product } from "@/lib/supabase"
 
 export const ProductList = () => {
+    const [products, setProducts] = useState<Product[]>([])
+    const [isLoading, setIsLoading] = useState(true)
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
+    useEffect(() => {
+        fetchProducts()
+    }, [])
+
+    const fetchProducts = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('products')
+                .select('*')
+                .eq('status', 'active')
+                .order('created_at', { ascending: false })
+
+            if (error) throw error
+            setProducts(data || [])
+        } catch (error) {
+            console.error("Failed to fetch products:", error)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    // Format price to display format
+    const formatPrice = (price: number) => {
+        return `₮ ${price.toLocaleString()}`
+    }
+
+    const handleProductClick = (product: Product) => {
+        setSelectedProduct(product)
+    }
+
+    const handleCloseDialog = () => {
+        setSelectedProduct(null)
+    }
+
     return (
         <section className="w-full bg-white container mx-auto px-4 sm:px-6 lg:px-8 pb-24">
 
@@ -54,7 +52,7 @@ export const ProductList = () => {
                 <div className="flex items-center gap-6">
                     <button className="text-xs font-semibold tracking-widest text-black hover:text-black/60 transition-colors uppercase">
                         <div className="flex items-center gap-3">
-                            <p className="text-2xl font-semibold text-gray-800">All Products</p>
+                            <p className="text-2xl font-semibold text-gray-800">Бүх бүтээгдэхүүн</p>
                             <svg
                                 className="w-6 h-6 text-gray-800"
                                 fill="none"
@@ -68,23 +66,42 @@ export const ProductList = () => {
                 </div>
 
                 <div className="flex items-center gap-2 text-xs font-medium tracking-wider text-black/40">
-                    SHOWING 1-12 OF 30 RESULTS
+                    {!isLoading && `${products.length} БҮТЭЭГДЭХҮҮН`}
                 </div>
             </div>
 
-            {/* Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
-                {products.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        image={product.image}
-                        title={product.title}
-                        price={product.price}
-                        originalPrice={product.originalPrice}
-                        tag={product.tag}
-                    />
-                ))}
-            </div>
+            {/* Loading */}
+            {isLoading ? (
+                <div className="flex justify-center items-center py-20">
+                    <div className="animate-spin w-8 h-8 border-2 border-main border-t-transparent rounded-full" />
+                </div>
+            ) : products.length === 0 ? (
+                <div className="text-center py-20">
+                    <p className="text-gray-500">Бүтээгдэхүүн байхгүй байна</p>
+                </div>
+            ) : (
+                /* Grid */
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
+                    {products.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            image={product.images?.[0] || "/placeholder.png"}
+                            title={product.name}
+                            price={formatPrice(product.discount_price || product.price)}
+                            originalPrice={product.discount_price ? formatPrice(product.price) : undefined}
+                            tag={product.discount_price ? "SALE" : undefined}
+                            onDetailClick={() => handleProductClick(product)}
+                        />
+                    ))}
+                </div>
+            )}
+
+            {/* Product Detail Dialog */}
+            <ProductDetailDialog
+                product={selectedProduct}
+                isOpen={!!selectedProduct}
+                onClose={handleCloseDialog}
+            />
         </section>
-    );
-};
+    )
+}

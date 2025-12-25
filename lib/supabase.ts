@@ -74,6 +74,33 @@ export interface Category {
     created_at: string
 }
 
+// Product Category type
+export interface ProductCategory {
+    id: string
+    name: string
+    created_at: string
+    updated_at: string
+}
+
+// Product type
+export type ProductStatus = 'draft' | 'active' | 'hidden'
+export type ProductBuyType = 'fb_messenger' | 'fb_post'
+
+export interface Product {
+    id: string
+    name: string
+    short_description: string
+    images: string[]  // Array of image URLs
+    price: number
+    discount_price: number | null  // Discounted price (optional)
+    status: ProductStatus
+    buy_type: ProductBuyType
+    buy_link: string
+    category: string | null  // UUID reference to product_categories
+    created_at: string
+    updated_at: string
+}
+
 // Helper function to calculate reading time from HTML content
 export const calculateReadingTimeFromHtml = (htmlContent: string): number => {
     const wordsPerMinute = 200
