@@ -83,15 +83,15 @@ export const ProductDetailDialog = ({ product, isOpen, onClose }: ProductDetailD
                                 <>
                                     <button
                                         onClick={prevImage}
-                                        className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all"
+                                        className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:-translate-x-1"
                                     >
-                                        <ChevronLeft className="w-5 h-5 text-gray-700" />
+                                        <ChevronLeft className="w-5 h-5 text-secondary" />
                                     </button>
                                     <button
                                         onClick={nextImage}
-                                        className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all"
+                                        className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all hover:translate-x-1"
                                     >
-                                        <ChevronRight className="w-5 h-5 text-gray-700" />
+                                        <ChevronRight className="w-5 h-5 text-secondary" />
                                     </button>
                                 </>
                             )}
@@ -99,16 +99,15 @@ export const ProductDetailDialog = ({ product, isOpen, onClose }: ProductDetailD
 
                         {/* Thumbnail Gallery */}
                         {images.length > 1 && (
-                            <div className="flex gap-2 mt-4 overflow-x-auto pb-2 justify-center">
+                            <div className="flex gap-2 pt-4 overflow-x-auto pb-2 justify-center">
                                 {images.map((img, index) => (
                                     <button
                                         key={index}
                                         onClick={() => setSelectedImageIndex(index)}
-                                        className={`relative w-16 h-16 rounded-lg overflow-hidden shrink-0 transition-all ${
-                                            selectedImageIndex === index
-                                                ? 'ring-2 ring-main ring-offset-2'
-                                                : 'opacity-60 hover:opacity-100'
-                                        }`}
+                                        className={`relative w-16 h-16 rounded-lg overflow-hidden shrink-0 transition-all ${selectedImageIndex === index
+                                            ? 'ring-2 ring-main ring-offset-2'
+                                            : 'opacity-60 hover:opacity-100'
+                                            }`}
                                     >
                                         <Image
                                             src={img}

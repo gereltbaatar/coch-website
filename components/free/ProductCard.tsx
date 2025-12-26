@@ -36,7 +36,7 @@ export const ProductCard = ({ image, title, price, originalPrice, tag, onDetailC
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100">
                     <button
                         onClick={onDetailClick}
-                        className="bg-white text-black px-4 py-3 rounded-full flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-lg"
+                        className="bg-white text-black px-4 py-3 rounded-full flex items-center gap-2 transform  group-hover:translate-y-0 transition-all duration-300 shadow-lg"
                     >
                         <span className="text-xs font-medium tracking-widest uppercase">Дэлгэрэнгүй</span>
                         <MoveRight className="w-3 h-3" />

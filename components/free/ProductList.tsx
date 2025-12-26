@@ -45,7 +45,7 @@ export const ProductList = () => {
     }
 
     return (
-        <section className="w-full bg-white container mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+        <section className="w-full bg-white max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 pb-24">
 
             {/* Toolbar */}
             <div className="flex flex-col sm:flex-row justify-between items-center mb-12 border-b border-black/5 pb-6 gap-4">

@@ -50,7 +50,7 @@ const unformatPrice = (value: string) => {
 export default function EditProductPage() {
     const router = useRouter()
     const searchParams = useSearchParams()
-    const productId = searchParams.get('id')
+    const productId = searchParams?.get('id')
 
     const [isLoadingProduct, setIsLoadingProduct] = useState(true)
     const [name, setName] = useState("")
