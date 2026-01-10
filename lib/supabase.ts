@@ -5,6 +5,15 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
+// Admin user type
+export interface AdminUser {
+    id: string
+    email: string
+    name?: string
+    created_at: string
+    created_by?: string
+}
+
 // Blog block types for content
 export interface BlogBlock {
     type: 'text' | 'image'

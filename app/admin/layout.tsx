@@ -2,14 +2,20 @@
 
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
     ChevronLeft,
     Menu,
     FileText,
     ShoppingBag,
+    LogOut,
+    UserCircle,
+    Settings,
 } from "lucide-react"
 import Image from "next/image"
+import AuthGuard from "@/components/admin/AuthGuard"
+import { signOut, getCurrentUser } from "@/lib/auth"
+import { toast } from "sonner"
 
 export default function AdminLayout({
     children,
@@ -18,20 +24,52 @@ export default function AdminLayout({
 }) {
     const pathname = usePathname()
     const [isCollapsed, setIsCollapsed] = useState(false)
+    const [userEmail, setUserEmail] = useState<string>('')
+
+    // Check if we're on login or auth pages
+    const isAuthPage = pathname === '/admin/login' || pathname?.startsWith('/admin/auth')
+
+    useEffect(() => {
+        const loadUser = async () => {
+            const user = await getCurrentUser()
+            if (user?.email) {
+                setUserEmail(user.email)
+            }
+        }
+        loadUser()
+    }, [])
 
     const toggleSidebar = () => {
         setIsCollapsed(!isCollapsed)
     }
 
+    const handleSignOut = async () => {
+        try {
+            await signOut()
+            toast.success('Амжилттай гарлаа')
+            window.location.href = '/admin/login'
+        } catch (error) {
+            console.error('Error signing out:', error)
+            toast.error('Гарахад алдаа гарлаа')
+        }
+    }
+
     const menuItems = [
         { icon: FileText, label: "Blog", href: "/admin/blog" },
         { icon: ShoppingBag, label: "Products", href: "/admin/product" },
+        { icon: Settings, label: "Админ удирдлага", href: "/admin/users" },
     ]
 
+    // If on auth page, render children without sidebar
+    if (isAuthPage) {
+        return <AuthGuard>{children}</AuthGuard>
+    }
+
     return (
-        <div className="flex h-screen bg-white overflow-hidden">
-            {/* Sidebar */}
-            <aside
+        <AuthGuard>
+            <div className="flex h-screen bg-white overflow-hidden">
+                {/* Sidebar */}
+                <aside
                 className={`
                     h-screen bg-[#F5F7FA] border-r border-gray-200 transition-all duration-300 ease-in-out flex flex-col
                     ${isCollapsed ? "w-20" : "w-[280px]"}
@@ -104,12 +142,42 @@ export default function AdminLayout({
                         )
                     })}
                 </div>
+
+                {/* User Info & Logout */}
+                <div className="p-4 border-t border-gray-200">
+                    {!isCollapsed ? (
+                        <div className="space-y-2">
+                            <div className="flex items-center gap-3 px-3 py-2 rounded-xl bg-gray-100">
+                                <UserCircle size={20} className="text-gray-600" />
+                                <div className="flex-1 min-w-0">
+                                    <p className="text-xs text-gray-500">Нэвтэрсэн</p>
+                                    <p className="text-sm font-medium text-gray-900 truncate">{userEmail || 'Loading...'}</p>
+                                </div>
+                            </div>
+                            <button
+                                onClick={handleSignOut}
+                                className="w-full flex items-center gap-3 px-3 py-2 rounded-xl hover:bg-red-50 text-red-600 transition-colors"
+                            >
+                                <LogOut size={20} />
+                                <span className="font-medium">Гарах</span>
+                            </button>
+                        </div>
+                    ) : (
+                        <button
+                            onClick={handleSignOut}
+                            className="w-full flex justify-center p-2 rounded-xl hover:bg-red-50 text-red-600 transition-colors"
+                        >
+                            <LogOut size={20} />
+                        </button>
+                    )}
+                </div>
             </aside>
 
-            {/* Main Content */}
-            <main className="flex-1 overflow-y-auto bg-gray-50 p-8">
-                {children}
-            </main>
-        </div>
+                {/* Main Content */}
+                <main className="flex-1 overflow-y-auto bg-gray-50 p-8">
+                    {children}
+                </main>
+            </div>
+        </AuthGuard>
     )
 }

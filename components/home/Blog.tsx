@@ -24,8 +24,9 @@ export const Blog = () => {
 
             if (error) throw error
             setBlogs(data || [])
-        } catch (error) {
-            console.error("Failed to fetch blogs:", error)
+        } catch (error: unknown) {
+            const err = error as { message?: string; code?: string }
+            console.error("Failed to fetch blogs:", err.message, err.code)
         } finally {
             setIsLoading(false)
         }

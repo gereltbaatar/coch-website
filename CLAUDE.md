@@ -5,10 +5,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ```bash
-npm run dev      # Start development server
-npm run build    # Production build
-npm run start    # Start production server
-npm run lint     # Run ESLint
+yarn dev       # Start development server (preferred)
+yarn build     # Production build
+yarn start     # Start production server
+yarn lint      # Run ESLint
 ```
 
 ## Tech Stack
@@ -19,6 +19,7 @@ npm run lint     # Run ESLint
 - **Images**: Cloudinary for uploads with webp optimization
 - **Rich Text**: Tiptap 3 for blog content (stored as JSON, not HTML)
 - **Icons**: lucide-react
+- **Notifications**: sonner for toasts
 
 ## Architecture
 
@@ -43,7 +44,24 @@ Key tables: `blogs`, `products`, `product_categories`, `comments`, `reactions`, 
 
 TypeScript interfaces defined in `/lib/supabase.ts`:
 - `Blog` - content stored as TiptapContent JSON
-- `Product` - buy_type: 'fb_messenger' | 'fb_post'
+- `Product` - buy_type: 'fb_messenger' | 'fb_post', images: string[]
+
+### Tiptap Content Handling
+
+Blog content is stored as Tiptap JSON. To render:
+```typescript
+import { generateHTML } from '@tiptap/html'
+import StarterKit from '@tiptap/starter-kit'
+import Link from '@tiptap/extension-link'
+import Image from '@tiptap/extension-image'
+// ... other extensions
+
+const html = generateHTML(blog.content, [StarterKit, Link, Image, ...])
+```
+
+### Cloudinary Image Upload
+
+Use `uploadToCloudinary()` from `/lib/cloudinary.ts`. Returns optimized webp URL with `/upload/f_webp,q_80/` transformation.
 
 ## Environment Variables
 
@@ -56,8 +74,7 @@ NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
 
 ## Important Notes
 
-- Blog content uses Tiptap JSON format - use `generateHTML()` from Tiptap to render
-- Images: Use Cloudinary's webp format parameter for optimization
-- User-facing content is in Mongolian; navigation in English
-- Admin routes exist but have no auth middleware implemented
+- User-facing content is in Mongolian; navigation/code in English
+- Admin routes (`/admin/*`) have no auth middleware - open access
 - Remote images allowed from: unsplash.com, ui-avatars.com, res.cloudinary.com
+- Supabase RLS policies are permissive (allow all operations)
