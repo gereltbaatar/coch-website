@@ -1,7 +1,14 @@
+"use client";
+
 import Image from 'next/image';
 import { Phone, Mail } from 'lucide-react';
+import { useLanguage } from "@/lib/LanguageContext";
+import { trContact } from "@/translations/home/trContact";
 
 export const Contact = () => {
+    const { language } = useLanguage();
+    const t = trContact[language];
+
     return (
         <section className="bg-secondary w-full py-12 sm:py-16 lg:py-24" id="contact">
             <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6">
@@ -17,43 +24,43 @@ export const Contact = () => {
                     </div>
 
                     {/* Right Side - Form */}
-                    <div className="w-full lg:w-1/2 p-8 sm:p-12 lg:p-16 bg-secondary"> {/* Added a slight tint if needed or keep white */}
+                    <div className="w-full lg:w-1/2 p-8 sm:p-12 lg:p-16 bg-secondary">
 
                         <div className="mb-14">
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-black tracking-wide text-center">Contact <span className="text-main">Us</span></h2>
-                            <p className="text-base sm:text-lg font-light text-[#4a4a4a] mt-2 text-center">Have questions or want to chat before booking? I’d love to hear from you.</p>
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-black tracking-wide text-center">{t.title1} <span className="text-main">{t.title2}</span></h2>
+                            <p className="text-base sm:text-lg font-light text-[#4a4a4a] mt-2 text-center">{t.subtitle}</p>
                         </div>
 
                         <form className="space-y-8 mt-4">
                             <div className="relative">
-                                <label htmlFor="name" className="sr-only">Your Name</label>
+                                <label htmlFor="name" className="sr-only">{t.yourName}</label>
                                 <input
                                     type="text"
                                     id="name"
                                     name="name"
-                                    placeholder="Your Name"
+                                    placeholder={t.yourName}
                                     className="w-full px-0 py-2 bg-transparent border-b border-gray-400 focus:border-black outline-none text-xl font-light text-gray-800 placeholder-gray-800"
                                 />
                             </div>
 
                             <div className="relative">
-                                <label htmlFor="email" className="sr-only">Your e-Mail</label>
+                                <label htmlFor="email" className="sr-only">{t.yourEmail}</label>
                                 <input
                                     type="email"
                                     id="email"
                                     name="email"
-                                    placeholder="Your e-Mail"
+                                    placeholder={t.yourEmail}
                                     className="w-full px-0 py-2 bg-transparent border-b border-gray-400 focus:border-black outline-none text-xl font-light text-gray-800 placeholder-gray-800"
                                 />
                             </div>
 
                             <div className="relative">
-                                <label htmlFor="message" className="sr-only">Your message to us</label>
+                                <label htmlFor="message" className="sr-only">{t.yourMessage}</label>
                                 <textarea
                                     id="message"
                                     name="message"
                                     rows={1}
-                                    placeholder="Your message to us"
+                                    placeholder={t.yourMessage}
                                     className="w-full px-0 py-2 bg-transparent border-b border-gray-400 focus:border-black outline-none text-xl font-light text-gray-800 placeholder-gray-800 resize-none"
                                 />
                             </div>
@@ -63,7 +70,7 @@ export const Contact = () => {
                                     type="submit"
                                     className="w-full px-8 py-4 bg-main hover:bg-main/90 text-secondary text-lg font-medium rounded-full transition-all duration-300"
                                 >
-                                    Send the message
+                                    {t.sendMessage}
                                 </button>
                             </div>
                         </form>
@@ -81,7 +88,7 @@ export const Contact = () => {
                             <Phone className="w-5 h-5 text-secondary" />
                         </div>
                         <div>
-                            <p className="text-sm text-gray-500">Phone</p>
+                            <p className="text-sm text-gray-500">{t.phone}</p>
                             <p className="text-lg font-medium text-gray-900">+976 9999 9999</p>
                         </div>
                     </a>
@@ -95,7 +102,7 @@ export const Contact = () => {
                             <Mail className="w-5 h-5 text-secondary" />
                         </div>
                         <div>
-                            <p className="text-sm text-gray-500">Email</p>
+                            <p className="text-sm text-gray-500">{t.email}</p>
                             <p className="text-lg font-medium text-gray-900">hello@example.com</p>
                         </div>
                     </a>

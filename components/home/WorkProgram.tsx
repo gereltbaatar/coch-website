@@ -1,6 +1,13 @@
+"use client";
+
 import Image from "next/image"
+import { useLanguage } from "@/lib/LanguageContext";
+import { trWorkTogether } from "@/translations/home/trWorkTogether";
 
 export const WorkProgram = () => {
+    const { language } = useLanguage();
+    const t = trWorkTogether[language];
+
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 min-h-[550px]">
             <div className="bg-secondary p-6 rounded-3xl sm:rounded-l-3xl sm:rounded-tr-none sm:rounded-br-none flex flex-col min-h-fit">
@@ -19,14 +26,12 @@ export const WorkProgram = () => {
                 </div>
 
                 <div className="flex flex-col gap-4 mt-auto">
-                    <h1 className="text-black text-3xl font-medium">Self-Discovery Program</h1>
+                    <h1 className="text-black text-3xl font-medium">{t.selfDiscoveryTitle}</h1>
                     <p className="text-gray-700 text-base font-normal leading-relaxed">
-                        Structured programs with exercises, journaling, and reflection guides.
-                        Perfect for anyone new to self-awareness work.
-                        Online resources and workbooks to support your growth step by step.
+                        {t.selfDiscoveryDesc}
                     </p>
                     <button className="bg-main text-white text-base font-normal px-8 py-2.5 rounded-full transition-all duration-300 hover:bg-main/90 border border-main cursor-pointer transform w-fit mt-2">
-                        Read More
+                        {t.readMore}
                     </button>
                 </div>
             </div>

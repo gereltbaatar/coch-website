@@ -2,37 +2,41 @@
 
 import { useState } from 'react';
 import { Plus, X } from 'lucide-react';
+import { useLanguage } from "@/lib/LanguageContext";
+import { trContactPage } from "@/translations/contact/trContactPage";
 
 interface FAQItem {
     question: string;
     answer: string;
 }
 
-const faqs: FAQItem[] = [
-    {
-        question: "What can this coaching program do for me?",
-        answer: "This coaching program helps clarify your goals, overcome obstacles, and creates actionable plans for personal and professional growth. We work together to unlock your potential."
-    },
-    {
-        question: "How do I integrate it into my daily routine?",
-        answer: "We focus on building sustainable habits. Strategies are tailored to fit your lifestyle, ensuring that changes are manageable and effective without overwhelming you."
-    },
-    {
-        question: "Can the coaching be customized?",
-        answer: "Absolutely. Every session is tailored to your specific needs, challenges, and aspirations. We adapt our approach as you progress and evolve."
-    },
-    {
-        question: "How do I track my progress?",
-        answer: "We set clear, measurable milestones at the beginning. Regular check-ins and reviews ensure we're on track and allow us to celebrate your wins along the way."
-    },
-    {
-        question: "What support is available between sessions?",
-        answer: "You'll have access to resources, email support, and specific tools to keep you motivated and accountable between our scheduled meetings."
-    }
-];
-
 export const ContactFAQ = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const { language } = useLanguage();
+    const t = trContactPage[language];
+
+    const faqs: FAQItem[] = [
+        {
+            question: t.faq1Question,
+            answer: t.faq1Answer
+        },
+        {
+            question: t.faq2Question,
+            answer: t.faq2Answer
+        },
+        {
+            question: t.faq3Question,
+            answer: t.faq3Answer
+        },
+        {
+            question: t.faq4Question,
+            answer: t.faq4Answer
+        },
+        {
+            question: t.faq5Question,
+            answer: t.faq5Answer
+        }
+    ];
 
     const toggleAccordion = (index: number) => {
         setOpenIndex(openIndex === index ? null : index);
@@ -42,9 +46,9 @@ export const ContactFAQ = () => {
         <section className="w-full bg-secondary py-16 sm:py-24">
             <div className="max-w-4xl mx-auto px-5">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl sm:text-5xl font-light text-[#2a2a2a] mb-6">Have Questions?</h2>
+                    <h2 className="text-4xl sm:text-5xl font-light text-[#2a2a2a] mb-6">{t.haveQuestions}</h2>
                     <p className="text-lg text-[#4a4a4a] font-light max-w-2xl mx-auto leading-relaxed">
-                        Check out the frequently asked questions or reach out directly. I'm here to help you on your journey.
+                        {t.faqDescription}
                     </p>
                 </div>
 

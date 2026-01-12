@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image"
 import Link from "next/link"
 import { Blog } from "@/lib/supabase"
+import { useLanguage } from "@/lib/LanguageContext"
+import { trBlogPage } from "@/translations/blog/trBlogPage"
 
 interface BlogPostCardProps {
     blog: Blog
@@ -8,8 +12,11 @@ interface BlogPostCardProps {
 }
 
 export const BlogPostCard = ({ blog, featured = false }: BlogPostCardProps) => {
-    // Format date
-    const formattedDate = new Date(blog.created_at).toLocaleDateString('en-US', {
+    const { language } = useLanguage()
+    const t = trBlogPage[language]
+
+    // Format date based on language
+    const formattedDate = new Date(blog.created_at).toLocaleDateString(language === 'mn' ? 'mn-MN' : 'en-US', {
         year: 'numeric',
         month: 'short',
         day: 'numeric'
@@ -38,8 +45,6 @@ export const BlogPostCard = ({ blog, featured = false }: BlogPostCardProps) => {
                     {formattedDate}
                 </div>
 
-
-
                 {/* Arrow Button */}
                 <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white flex items-center justify-center transition-all duration-300 group-hover:bg-main group-hover:scale-110">
                     <svg
@@ -55,14 +60,11 @@ export const BlogPostCard = ({ blog, featured = false }: BlogPostCardProps) => {
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                     <div className="flex items-center gap-2 mb-2">
-                        <span className="text-white/60 text-xs">{blog.reading_time} min read</span>
+                        <span className="text-white/60 text-xs">{blog.reading_time} {t.minRead}</span>
                     </div>
                     <h3 className="text-2xl font-semibold text-white mb-2">
                         {blog.title}
                     </h3>
-                    {/* <p className="text-white/70 text-sm leading-relaxed line-clamp-2">
-                        {blog.excerpt}
-                    </p> */}
                 </div>
             </div>
         </Link>

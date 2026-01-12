@@ -1,13 +1,20 @@
+"use client";
+
 import Image from "next/image";
+import { useLanguage } from "@/lib/LanguageContext";
+import { trAboutMe } from "@/translations/home/trAboutMe";
 
 export const AboutMe = () => {
+    const { language } = useLanguage();
+    const t = trAboutMe[language];
+
     const features = [
-        "ICF-trained coach",
-        "Public speaker",
-        "Emotional intelligence",
-        "Spiritual growth",
-        "Self-awareness",
-        "Inner peace",
+        t.features.icfCoach,
+        t.features.publicSpeaker,
+        t.features.emotionalIntelligence,
+        t.features.spiritualGrowth,
+        t.features.selfAwareness,
+        t.features.innerPeace,
     ];
 
     return (
@@ -29,29 +36,20 @@ export const AboutMe = () => {
                         {/* Tag */}
                         <div>
                             <span className="inline-block px-6 py-2 rounded-full border border-main text-main text-sm font-medium tracking-wider uppercase">
-                                About Me
+                                {t.tag}
                             </span>
                         </div>
 
                         {/* Headline */}
                         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-[#2a2a2a] leading-[1.1]">
-                            Guiding you towards <br />
-                            <span className="text-main italic">clarity and confidence.</span>
+                            {t.title1} <br />
+                            <span className="text-main italic">{t.title2}</span>
                         </h2>
 
                         {/* Description */}
                         <div className="space-y-6 text-[#4a4a4a] text-base sm:text-lg leading-relaxed">
-                            <p>
-                                Hi, I'm Uyanga — an 3x certified self-awareness and spiritual
-                                coach and public speaker. For a long time, I struggled with
-                                doubt and self-confidence. That was my turning point — the
-                                moment I chose to begin my inner work.
-                            </p>
-                            <p>
-                                Today, I guide others on this same journey: uncovering limiting
-                                beliefs, bringing hidden patterns into the light, and building
-                                the confidence to step fully into one's authentic self.
-                            </p>
+                            <p>{t.description1}</p>
+                            <p>{t.description2}</p>
                         </div>
 
                         {/* Features Grid */}

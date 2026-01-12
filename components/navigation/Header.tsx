@@ -3,10 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/lib/LanguageContext";
+import { trHeader } from "@/translations/navigation/trHeader";
+import { Globe } from "lucide-react";
 
 export const Header = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const { language, setLanguage } = useLanguage();
+  const t = trHeader[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,11 +40,15 @@ export const Header = () => {
   }, [lastScrollY]);
 
   const navItems = [
-    { label: "About me", href: "/#about" }, // Assuming about is on homepage based on previous context, adjusted href just in case or keep as is if separate page
-    { label: "Services", href: "/services" },
-    { label: "Blog", href: "/blogs" },
-    { label: "Free", href: "/free" },
+    { label: t.aboutMe, href: "/#about" },
+    { label: t.services, href: "/services" },
+    { label: t.blog, href: "/blogs" },
+    { label: t.freeProducts, href: "/free" },
   ];
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'mn' ? 'en' : 'mn');
+  };
 
   return (
     <div
@@ -52,9 +61,9 @@ export const Header = () => {
             <Image src="/logo.png" alt="logo" width={50} height={50} />
           </Link>
 
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <Link
-              key={item.href}
+              key={index}
               href={item.href}
               className="text-white font-semibold text-sm uppercase px-4 py-2 cursor-pointer"
             >
@@ -63,13 +72,26 @@ export const Header = () => {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 border border-secondary rounded-full px-4 py-2">
-          <Link
-            href="/contact"
-            className="text-white font-semibold text-sm uppercase cursor-pointer"
+        <div className="flex items-center gap-4">
+          {/* Language Toggle */}
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center gap-2 text-white hover:text-secondary transition-colors"
+            aria-label="Toggle Language"
           >
-            Contact
-          </Link>
+            <Globe className="w-4 h-4" />
+            <span className="text-sm font-semibold uppercase">{language}</span>
+          </button>
+
+          {/* Contact Button */}
+          <div className="flex items-center gap-2 border border-secondary rounded-full px-4 py-2">
+            <Link
+              href="/contact"
+              className="text-white font-semibold text-sm uppercase cursor-pointer"
+            >
+              {t.contact}
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,39 @@
+'use client'
+
 import { Facebook, Instagram, Linkedin } from "lucide-react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import { useState, useRef } from "react"
+import { useLanguage } from "@/lib/LanguageContext"
+import { trFooter } from "@/translations/navigation/trFooter"
 
 export const Footer = () => {
+    const router = useRouter()
+    const [clickCount, setClickCount] = useState(0)
+    const timerRef = useRef<NodeJS.Timeout | null>(null)
+    const { language } = useLanguage()
+    const t = trFooter[language]
+
+    const handleCoachingClick = () => {
+        setClickCount((prev) => prev + 1)
+
+        // Clear existing timer
+        if (timerRef.current) {
+            clearTimeout(timerRef.current)
+        }
+
+        // Reset counter after 2 seconds of inactivity
+        timerRef.current = setTimeout(() => {
+            setClickCount(0)
+        }, 2000)
+
+        // Navigate to admin after 4 clicks
+        if (clickCount + 1 >= 4) {
+            router.push('/admin')
+            setClickCount(0)
+        }
+    }
+
     return (
         <footer className="w-full relative overflow-hidden">
             <div className="absolute inset-0 w-full h-full">
@@ -21,18 +53,18 @@ export const Footer = () => {
                         {/* Navigation Links */}
                         <div className="flex gap-8 sm:gap-12 flex-wrap">
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-semibold text-main uppercase tracking-widest text-sm">Menu</h3>
+                                <h3 className="font-semibold text-main uppercase tracking-widest text-sm">{t.menu}</h3>
                                 <nav className="flex flex-col gap-2 text-black/70 font-light text-sm sm:text-base">
-                                    <a href="#" className="hover:text-main transition-colors">Home</a>
-                                    <a href="#about" className="hover:text-main transition-colors">About Me</a>
-                                    <a href="#services" className="hover:text-main transition-colors">Services</a>
+                                    <a href="#" className="hover:text-main transition-colors">{t.home}</a>
+                                    <a href="#about" className="hover:text-main transition-colors">{t.aboutMe}</a>
+                                    <a href="#services" className="hover:text-main transition-colors">{t.services}</a>
                                 </nav>
                             </div>
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-semibold text-main uppercase tracking-widest text-sm opacity-0 select-none">Menu</h3>
+                                <h3 className="font-semibold text-main uppercase tracking-widest text-sm opacity-0 select-none">{t.menu}</h3>
                                 <nav className="flex flex-col gap-2 text-black/70 font-light text-sm sm:text-base">
-                                    <a href="#blog" className="hover:text-main transition-colors">Blog</a>
-                                    <a href="#contact" className="hover:text-main transition-colors">Contact</a>
+                                    <a href="#blog" className="hover:text-main transition-colors">{t.blog}</a>
+                                    <a href="#contact" className="hover:text-main transition-colors">{t.contact}</a>
                                 </nav>
                             </div>
                         </div>
@@ -52,9 +84,16 @@ export const Footer = () => {
                             </div>
 
                             <div className="flex flex-col sm:flex-row items-center lg:justify-end gap-2 sm:gap-6 text-xs sm:text-sm text-black/50 font-light">
-                                <p>© 2025 Coaching Business</p>
-                                <span className="hidden sm:inline">•</span>
-                                <a href="#" className="hover:text-main transition-colors">Privacy Policy</a>
+                                <p>
+                                    © 2025{' '}
+                                    <span
+                                        onClick={handleCoachingClick}
+                                        className="cursor-default select-none"
+                                    >
+                                        Coaching
+                                    </span>
+                                    {' '}Business
+                                </p>
                             </div>
                         </div>
                     </div>

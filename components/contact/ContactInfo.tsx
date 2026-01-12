@@ -1,31 +1,8 @@
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+"use client"
 
-const contactItems = [
-    {
-        icon: Phone,
-        label: "Phone",
-        value: "+976 9999 9999",
-        href: "tel:+97699999999"
-    },
-    {
-        icon: Mail,
-        label: "Email",
-        value: "hello@uyanga.com",
-        href: "mailto:hello@uyanga.com"
-    },
-    {
-        icon: MapPin,
-        label: "Location",
-        value: "Ulaanbaatar, Mongolia",
-        href: null
-    },
-    {
-        icon: Clock,
-        label: "Working Hours",
-        value: "Mon - Fri: 9AM - 6PM",
-        href: null
-    }
-];
+import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { useLanguage } from "@/lib/LanguageContext";
+import { trContactPage } from "@/translations/contact/trContactPage";
 
 const socialLinks = [
     {
@@ -51,6 +28,36 @@ const socialLinks = [
 ];
 
 export const ContactInfo = () => {
+    const { language } = useLanguage();
+    const t = trContactPage[language];
+
+    const contactItems = [
+        {
+            icon: Phone,
+            label: t.phone,
+            value: "+976 9999 9999",
+            href: "tel:+97699999999"
+        },
+        {
+            icon: Mail,
+            label: t.email,
+            value: "hello@uyanga.com",
+            href: "mailto:hello@uyanga.com"
+        },
+        {
+            icon: MapPin,
+            label: t.location,
+            value: t.locationValue,
+            href: null
+        },
+        {
+            icon: Clock,
+            label: t.workingHours,
+            value: t.workingHoursValue,
+            href: null
+        }
+    ];
+
     return (
         <section className="bg-secondary w-full py-8 sm:py-12 pb-16 sm:pb-24">
             <div className="w-full max-w-[1536px] mx-auto px-4 sm:px-6">

@@ -1,7 +1,39 @@
+'use client'
+
 import Image from "next/image"
-import { Facebook, Instagram, Linkedin, Send } from "lucide-react"
+import { Facebook, Instagram, Linkedin } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useState, useRef } from "react"
+import { useLanguage } from "@/lib/LanguageContext"
+import { trSub } from "@/translations/home/trSub"
 
 export const Sub = () => {
+    const router = useRouter()
+    const [clickCount, setClickCount] = useState(0)
+    const timerRef = useRef<NodeJS.Timeout | null>(null)
+    const { language } = useLanguage()
+    const t = trSub[language]
+
+    const handleCoachingClick = () => {
+        setClickCount((prev) => prev + 1)
+
+        // Clear existing timer
+        if (timerRef.current) {
+            clearTimeout(timerRef.current)
+        }
+
+        // Reset counter after 2 seconds of inactivity
+        timerRef.current = setTimeout(() => {
+            setClickCount(0)
+        }, 2000)
+
+        // Navigate to admin after 4 clicks
+        if (clickCount + 1 >= 4) {
+            router.push('/admin')
+            setClickCount(0)
+        }
+    }
+
     return (
         <section className="min-h-screen w-full relative overflow-hidden flex flex-col justify-between">
             <div className="absolute inset-0 w-full h-full">
@@ -19,19 +51,19 @@ export const Sub = () => {
                 <div className="flex-1 flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto pt-20 pb-10">
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-2 flex-wrap mb-6">
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-black leading-tight">
-                            Subscribe
+                            {t.subscribe}
                         </h2>
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight">
-                            <span className="text-main">To Our Newsletter</span>
+                            <span className="text-main">{t.toNewsletter}</span>
                         </h2>
                     </div>
 
                     <p className="text-black text-sm sm:text-base lg:text-lg font-light max-w-[900px] text-center leading-relaxed px-4 mb-8">
-                        Want tips to save time, boost productivity, and run your business smoother? Join my newsletter for weekly VA insights, tools, and support—straight to your inbox!
+                        {t.description}
                     </p>
 
                     <button className="border-2 border-main px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl hover:bg-main hover:text-white transition-all duration-300 group mt-2">
-                        <p className="text-main group-hover:text-white font-light text-xs sm:text-sm tracking-widest">SUBSCRIBE NOW</p>
+                        <p className="text-main group-hover:text-white font-light text-xs sm:text-sm tracking-widest">{t.subscribeNow}</p>
                     </button>
                 </div>
 
@@ -42,18 +74,18 @@ export const Sub = () => {
                         {/* Navigation Links */}
                         <div className="flex gap-8 sm:gap-12 flex-wrap">
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-semibold text-main uppercase tracking-widest text-sm">Menu</h3>
+                                <h3 className="font-semibold text-main uppercase tracking-widest text-sm">{t.menu}</h3>
                                 <nav className="flex flex-col gap-2 text-black/70 font-light text-sm sm:text-base">
-                                    <a href="#" className="hover:text-main transition-colors">Home</a>
-                                    <a href="#about" className="hover:text-main transition-colors">About Me</a>
-                                    <a href="#services" className="hover:text-main transition-colors">Services</a>
+                                    <a href="#" className="hover:text-main transition-colors">{t.home}</a>
+                                    <a href="#about" className="hover:text-main transition-colors">{t.aboutMe}</a>
+                                    <a href="#services" className="hover:text-main transition-colors">{t.services}</a>
                                 </nav>
                             </div>
                             <div className="flex flex-col gap-4">
-                                <h3 className="font-semibold text-main uppercase tracking-widest text-sm opacity-0 select-none">Menu</h3>
+                                <h3 className="font-semibold text-main uppercase tracking-widest text-sm opacity-0 select-none">{t.menu}</h3>
                                 <nav className="flex flex-col gap-2 text-black/70 font-light text-sm sm:text-base">
-                                    <a href="#blog" className="hover:text-main transition-colors">Blog</a>
-                                    <a href="#contact" className="hover:text-main transition-colors">Contact</a>
+                                    <a href="#blog" className="hover:text-main transition-colors">{t.blog}</a>
+                                    <a href="#contact" className="hover:text-main transition-colors">{t.contact}</a>
                                 </nav>
                             </div>
                         </div>
@@ -73,9 +105,16 @@ export const Sub = () => {
                             </div>
 
                             <div className="flex flex-col sm:flex-row items-center lg:justify-end gap-2 sm:gap-6 text-xs sm:text-sm text-black/50 font-light">
-                                <p>© 2025 Coaching Business</p>
-                                <span className="hidden sm:inline">•</span>
-                                <a href="#" className="hover:text-main transition-colors">Privacy Policy</a>
+                                <p>
+                                    © 2025{' '}
+                                    <span
+                                        onClick={handleCoachingClick}
+                                        className="cursor-default select-none"
+                                    >
+                                        Coaching
+                                    </span>
+                                    {' '}Business
+                                </p>
                             </div>
                         </div>
                     </div>

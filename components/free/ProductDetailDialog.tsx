@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/dialog"
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/LanguageContext"
+import { trFreePage } from "@/translations/free/trFreePage"
 
 interface ProductDetailDialogProps {
     product: Product | null
@@ -20,6 +22,8 @@ interface ProductDetailDialogProps {
 
 export const ProductDetailDialog = ({ product, isOpen, onClose }: ProductDetailDialogProps) => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+    const { language } = useLanguage()
+    const t = trFreePage[language]
 
     const formatPrice = (price: number) => {
         return `₮${price.toLocaleString()}`
@@ -153,7 +157,7 @@ export const ProductDetailDialog = ({ product, isOpen, onClose }: ProductDetailD
                         {product.short_description && (
                             <div className="mb-6">
                                 <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wider mb-2">
-                                    Тайлбар
+                                    {t.description}
                                 </h3>
                                 <p className="text-gray-700 leading-relaxed">
                                     {product.short_description}
@@ -173,12 +177,12 @@ export const ProductDetailDialog = ({ product, isOpen, onClose }: ProductDetailD
                             {product.buy_type === 'fb_messenger' ? (
                                 <>
                                     <MessageCircle className="w-5 h-5" />
-                                    Messenger-ээр холбогдох
+                                    {t.messengerConnect}
                                 </>
                             ) : (
                                 <>
                                     <FileText className="w-5 h-5" />
-                                    Facebook пост руу очих
+                                    {t.goToFacebookPost}
                                 </>
                             )}
                         </Button>
@@ -186,8 +190,8 @@ export const ProductDetailDialog = ({ product, isOpen, onClose }: ProductDetailD
                         {/* Buy Type Info */}
                         <p className="text-center text-xs text-gray-400 mt-3">
                             {product.buy_type === 'fb_messenger'
-                                ? 'Messenger-ээр захиалга өгнө үү'
-                                : 'Facebook пост дээр захиалга өгнө үү'
+                                ? t.messengerOrder
+                                : t.facebookOrder
                             }
                         </p>
                     </div>

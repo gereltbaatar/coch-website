@@ -1,14 +1,20 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { ProductCard } from "./ProductCard"
 import { ProductDetailDialog } from "./ProductDetailDialog"
 import { supabase, Product } from "@/lib/supabase"
+import { useLanguage } from "@/lib/LanguageContext"
+import { trFreePage } from "@/translations/free/trFreePage"
 
 export const ProductList = () => {
+    const { language } = useLanguage()
+    const t = trFreePage[language]
     const [products, setProducts] = useState<Product[]>([])
     const [isLoading, setIsLoading] = useState(true)
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+    const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set())
+    const observerRef = useRef<IntersectionObserver | null>(null)
 
     useEffect(() => {
         fetchProducts()
@@ -44,6 +50,32 @@ export const ProductList = () => {
         setSelectedProduct(null)
     }
 
+    // Setup Intersection Observer for scroll animations
+    useEffect(() => {
+        observerRef.current = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const cardId = entry.target.getAttribute('data-card-id')
+                        if (cardId) {
+                            setVisibleCards((prev) => new Set(prev).add(cardId))
+                        }
+                    }
+                })
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            }
+        )
+
+        return () => {
+            if (observerRef.current) {
+                observerRef.current.disconnect()
+            }
+        }
+    }, [])
+
     return (
         <section className="w-full bg-white max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 pb-24">
 
@@ -52,7 +84,7 @@ export const ProductList = () => {
                 <div className="flex items-center gap-6">
                     <button className="text-xs font-semibold tracking-widest text-black hover:text-black/60 transition-colors uppercase">
                         <div className="flex items-center gap-3">
-                            <p className="text-2xl font-semibold text-gray-800">Бүх бүтээгдэхүүн</p>
+                            <p className="text-2xl font-semibold text-gray-800">{t.allProducts}</p>
                             <svg
                                 className="w-6 h-6 text-gray-800"
                                 fill="none"
@@ -66,7 +98,7 @@ export const ProductList = () => {
                 </div>
 
                 <div className="flex items-center gap-2 text-xs font-medium tracking-wider text-black/40">
-                    {!isLoading && `${products.length} БҮТЭЭГДЭХҮҮН`}
+                    {!isLoading && `${products.length} ${t.productsCount}`}
                 </div>
             </div>
 
@@ -77,21 +109,38 @@ export const ProductList = () => {
                 </div>
             ) : products.length === 0 ? (
                 <div className="text-center py-20">
-                    <p className="text-gray-500">Бүтээгдэхүүн байхгүй байна</p>
+                    <p className="text-gray-500">{t.noProducts}</p>
                 </div>
             ) : (
                 /* Grid */
                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-16">
-                    {products.map((product) => (
-                        <ProductCard
+                    {products.map((product, index) => (
+                        <div
                             key={product.id}
-                            image={product.images?.[0] || "/placeholder.png"}
-                            title={product.name}
-                            price={formatPrice(product.discount_price || product.price)}
-                            originalPrice={product.discount_price ? formatPrice(product.price) : undefined}
-                            tag={product.discount_price ? "SALE" : undefined}
-                            onDetailClick={() => handleProductClick(product)}
-                        />
+                            data-card-id={product.id}
+                            ref={(el) => {
+                                if (el && observerRef.current) {
+                                    observerRef.current.observe(el)
+                                }
+                            }}
+                            className={`transition-all duration-700 ease-out ${
+                                visibleCards.has(product.id)
+                                    ? 'opacity-100 translate-y-0'
+                                    : 'opacity-0 translate-y-12'
+                            }`}
+                            style={{
+                                transitionDelay: visibleCards.has(product.id) ? `${index % 4 * 100}ms` : '0ms'
+                            }}
+                        >
+                            <ProductCard
+                                image={product.images?.[0] || "/placeholder.png"}
+                                title={product.name}
+                                price={formatPrice(product.discount_price || product.price)}
+                                originalPrice={product.discount_price ? formatPrice(product.price) : undefined}
+                                tag={product.discount_price ? "SALE" : undefined}
+                                onDetailClick={() => handleProductClick(product)}
+                            />
+                        </div>
                     ))}
                 </div>
             )}

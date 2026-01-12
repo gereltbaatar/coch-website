@@ -1,5 +1,9 @@
+"use client"
+
 import Image from "next/image"
 import { MoveRight } from "lucide-react"
+import { useLanguage } from "@/lib/LanguageContext"
+import { trFreePage } from "@/translations/free/trFreePage"
 
 interface ProductCardProps {
     image: string
@@ -11,6 +15,8 @@ interface ProductCardProps {
 }
 
 export const ProductCard = ({ image, title, price, originalPrice, tag, onDetailClick }: ProductCardProps) => {
+    const { language } = useLanguage()
+    const t = trFreePage[language]
     return (
         <div className="group flex flex-col items-center rounded-3xl">
             {/* Image Container */}
@@ -33,12 +39,12 @@ export const ProductCard = ({ image, title, price, originalPrice, tag, onDetailC
                 </div>
 
                 {/* Overlay with Buttons */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100">
+                <div className="absolute inset-0 bg-black/0 md:group-hover:bg-black/5 transition-colors duration-300 flex md:items-center md:justify-center items-end justify-start p-4 md:p-0 gap-3 opacity-100 md:opacity-0 md:group-hover:opacity-100">
                     <button
                         onClick={onDetailClick}
-                        className="bg-white text-black px-4 py-3 rounded-full flex items-center gap-2 transform  group-hover:translate-y-0 transition-all duration-300 shadow-lg"
+                        className="bg-white text-black px-4 py-3 rounded-full flex items-center gap-2 transform transition-all duration-300 shadow-lg"
                     >
-                        <span className="text-xs font-medium tracking-widest uppercase">Дэлгэрэнгүй</span>
+                        <span className="text-xs font-medium tracking-widest uppercase">{t.detail}</span>
                         <MoveRight className="w-3 h-3" />
                     </button>
                 </div>

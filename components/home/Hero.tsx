@@ -1,7 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useLanguage } from "@/lib/LanguageContext";
+import { trHero } from "@/translations/home/trHero";
 
 export const Hero = () => {
+  const { language } = useLanguage();
+  const t = trHero[language];
+
   return (
     <section className="w-full h-full bg-secondary pt-24 sm:pt-28 lg:pt-32">
       <div className="max-w-[1536px] w-full h-full mx-auto px-5 py-6">
@@ -10,8 +17,8 @@ export const Hero = () => {
           <div className="flex flex-col justify-center gap-6 sm:gap-8 lg:gap-10">
             <div className="space-y-3">
               <h1 className="text-5xl lg:text-6xl xl:text-8xl font-light tracking-tight text-[#2a2a2a] leading-[1.1] text-center md:text-start">
-                Helping you uncover <br />
-                <span className="text-main italic">the power within</span>
+                {t.title1} <br />
+                <span className="text-main italic">{t.title2}</span>
               </h1>
             </div>
 
@@ -20,9 +27,7 @@ export const Hero = () => {
             {/* Description */}
             <div className="space-y-6 text-[#4a4a4a] text-base sm:text-lg leading-relaxed max-w-xl">
               <p className="font-light">
-                <span className="font-medium text-main">Uyanga</span> is an
-                ICF-trained coach, public speaker, and guide in emotional
-                intelligence and spiritual growth.
+                <span className="font-medium text-main">Uyanga</span> {t.description}
               </p>
             </div>
 
@@ -31,7 +36,7 @@ export const Hero = () => {
                 href="/contact"
                 className="group inline-flex justify-center items-center gap-3 bg-main hover:bg-main/90 text-white font-medium text-sm sm:text-lg tracking-wide px-8 py-3 sm:px-12 sm:py-4 rounded-full transition-all duration-300 cursor-pointer transform"
               >
-                Book Now
+                {t.bookNow}
                 <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                   →
                 </span>
@@ -41,7 +46,7 @@ export const Hero = () => {
                 href="/contact"
                 className="group inline-flex justify-center items-center gap-3 bg-transparent text-main font-medium border-2 border-main text-sm sm:text-lg tracking-wide px-8 py-3 sm:px-12 sm:py-4 rounded-full transition-all duration-300 cursor-pointer transform hover:bg-main/5"
               >
-                Contact Now
+                {t.contactNow}
                 <span className="transform group-hover:translate-x-1 transition-transform duration-300">
                   →
                 </span>
@@ -66,31 +71,27 @@ export const Hero = () => {
               {/* Chat Message Bubble 1 */}
               <div className="absolute bottom-8 right-4 sm:left-6 md:left-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[240px] sm:max-w-[320px] z-10">
                 <p className="text-xs sm:text-sm text-gray-800">
-                  Би хэрхэн өөрийгөө илүү сайн мэдэх вэ? 😓
+                  {t.chatBubble1} 😓
                 </p>
               </div>
 
               {/* Chat Message Bubble 2 */}
               <div className="absolute bottom-24 sm:bottom-28 right-4 sm:left-6 md:left-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[240px] sm:max-w-[320px] z-10">
                 <p className="text-xs sm:text-sm text-gray-800">
-                  Коучинг хэр удаан үр дүн өгдөг вэ? 😅
+                  {t.chatBubble2} 😅
                 </p>
               </div>
 
               {/* Chat Message Bubble 3 */}
               <div className="absolute bottom-40 sm:bottom-44 left-4 sm:left-6 md:left-8 bg-white/95 backdrop-blur-sm rounded-2xl px-4 py-3 shadow-lg max-w-[240px] sm:max-w-[320px] z-10">
                 <p className="text-xs sm:text-sm text-gray-800">
-                  Энэ миний хувьд тохирох уу? 😐
+                  {t.chatBubble3} 😐
                 </p>
               </div>
             </div>
           </div>
         </div>
-
-
-
       </div>
-    </section >
+    </section>
   );
 };
-

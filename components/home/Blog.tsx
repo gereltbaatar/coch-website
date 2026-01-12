@@ -4,10 +4,14 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { BlogPostCard } from "../blog"
 import { supabase, Blog as BlogType } from "@/lib/supabase"
+import { useLanguage } from "@/lib/LanguageContext"
+import { trBlog } from "@/translations/home/trBlog"
 
 export const Blog = () => {
     const [blogs, setBlogs] = useState<BlogType[]>([])
     const [isLoading, setIsLoading] = useState(true)
+    const { language } = useLanguage()
+    const t = trBlog[language]
 
     useEffect(() => {
         fetchBlogs()
@@ -39,7 +43,7 @@ export const Blog = () => {
                     <div className="bg-main border border-secondary rounded-[2.5rem] p-8 sm:p-12 flex flex-col items-center gap-8 sm:gap-12">
                         <div className="flex flex-col items-center">
                             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-secondary tracking-wide text-center">
-                                Blog <span className="font-medium">Posts</span>
+                                {t.title1} <span className="font-medium">{t.title2}</span>
                             </h2>
                         </div>
 
@@ -54,7 +58,7 @@ export const Blog = () => {
                                 ))
                             ) : (
                                 <div className="col-span-full text-center py-12 text-secondary/60">
-                                    Одоогоор нийтлэл байхгүй байна
+                                    {t.noPosts}
                                 </div>
                             )}
                         </div>
@@ -64,7 +68,7 @@ export const Blog = () => {
                                 href="/blogs"
                                 className="px-8 py-3 rounded-full border border-secondary text-secondary font-medium hover:bg-secondary hover:text-main transition-all duration-300"
                             >
-                                See All Posts
+                                {t.seeAllPosts}
                             </Link>
                         </div>
                     </div>
