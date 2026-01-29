@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image"
+import Link from "next/link"
 import { useLanguage } from "@/lib/LanguageContext";
 import { trWorkTogether } from "@/translations/home/trWorkTogether";
 
@@ -30,9 +31,12 @@ export const WorkProgram = () => {
                     <p className="text-gray-700 text-base font-normal leading-relaxed">
                         {t.selfDiscoveryDesc}
                     </p>
-                    <button className="bg-main text-white text-base font-normal px-8 py-2.5 rounded-full transition-all duration-300 hover:bg-main/90 border border-main cursor-pointer transform w-fit mt-2">
+                    <Link
+                        href="/services/corporate"
+                        className="bg-main text-white text-base font-normal px-8 py-2.5 rounded-full transition-all duration-300 hover:bg-main/90 border border-main cursor-pointer transform w-fit mt-2"
+                    >
                         {t.readMore}
-                    </button>
+                    </Link>
                 </div>
             </div>
             <div className="bg-secondary rounded-b-3xl sm:rounded-r-3xl sm:rounded-bl-none flex-col min-h-fit p-6 hidden sm:flex">

@@ -18,8 +18,8 @@ export const WorkTogether = () => {
                     </div>
                     <div className="border border-main bg-main rounded-4xl w-full min-h-fit p-4 sm:p-6 flex flex-col gap-4 sm:gap-6">
                         <div className="w-full grid-cols-1 sm:grid-cols-2 grid gap-4 sm:gap-6">
-                            <WorkTogetherCard title={t.oneToOneTitle} description={t.oneToOneDesc} image="/onetoone.png" />
-                            <WorkTogetherCard title={t.groupTitle} description={t.groupDesc} image="/group.png" />
+                            <WorkTogetherCard title={t.oneToOneTitle} description={t.oneToOneDesc} image="/onetoone.png" link="/services/1-1" />
+                            <WorkTogetherCard title={t.groupTitle} description={t.groupDesc} image="/group.png" link="/services/group" />
                         </div>
                         <WorkProgram />
                     </div>

@@ -33,7 +33,7 @@ export const Hero = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Link
-                href="/contact"
+                href="/services"
                 className="group inline-flex justify-center items-center gap-3 bg-main hover:bg-main/90 text-white font-medium text-sm sm:text-lg tracking-wide px-8 py-3 sm:px-12 sm:py-4 rounded-full transition-all duration-300 cursor-pointer transform"
               >
                 {t.bookNow}

@@ -15,7 +15,7 @@ yarn lint      # Run ESLint
 
 - **Framework**: Next.js 16 (App Router) with React 19 and TypeScript
 - **Styling**: Tailwind CSS 4 with shadcn/ui components (new-york style)
-- **Database**: Supabase (direct client access, no API routes)
+- **Database**: Supabase (direct client access, minimal API routes)
 - **Images**: Cloudinary for uploads with webp optimization
 - **Rich Text**: Tiptap 3 for blog content (stored as JSON, not HTML)
 - **Icons**: lucide-react
@@ -28,7 +28,8 @@ yarn lint      # Run ESLint
 - `/app` - Next.js App Router pages (admin/, blogs/, contact/, free/, services/)
 - `/components` - Feature-based organization (ui/, home/, admin/, blog/, free/, navigation/)
 - `/pages` - Page composition components (HomePage, FreePage, BlogPage, etc.)
-- `/lib` - Utilities: supabase.ts (client + TypeScript interfaces), cloudinary.ts, utils.ts
+- `/lib` - Utilities: supabase.ts (client + TypeScript interfaces), cloudinary.ts, auth.ts
+- `/translations` - i18n objects organized by feature (home/, navigation/, blog/, etc.)
 
 ### Key Patterns
 
@@ -40,11 +41,20 @@ yarn lint      # Run ESLint
 
 ### Database Schema (Supabase)
 
-Key tables: `blogs`, `products`, `product_categories`, `comments`, `reactions`, `categories`
+Key tables: `blogs`, `products`, `product_categories`, `comments`, `reactions`, `categories`, `admin_users`
 
 TypeScript interfaces defined in `/lib/supabase.ts`:
 - `Blog` - content stored as TiptapContent JSON
 - `Product` - buy_type: 'fb_messenger' | 'fb_post', images: string[]
+- `AdminUser` - email whitelist for admin access
+
+### Authentication System
+
+Admin access uses Google OAuth with email whitelist:
+1. `/admin/login` - Google OAuth login with Silk 3D background
+2. `/admin/auth/callback` - OAuth callback, checks email against `admin_users` table
+3. `AuthGuard` component wraps protected routes
+4. Auth utilities in `/lib/auth.ts`: `signInWithGoogle`, `signInWithEmail`, `signOut`, `getCurrentUser`, `checkAdminAccess`
 
 ### Tiptap Content Handling
 
@@ -63,6 +73,17 @@ const html = generateHTML(blog.content, [StarterKit, Link, Image, ...])
 
 Use `uploadToCloudinary()` from `/lib/cloudinary.ts`. Returns optimized webp URL with `/upload/f_webp,q_80/` transformation.
 
+### Internationalization
+
+Language context via `LanguageContext.tsx` with `useLanguage()` hook. Translations structured as:
+```typescript
+// translations/home/trHero.ts
+export const trHero = {
+  mn: { title: "Монгол текст", ... },
+  en: { title: "English text", ... }
+}
+```
+
 ## Environment Variables
 
 ```
@@ -70,11 +91,14 @@ NEXT_PUBLIC_SUPABASE_URL
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
 NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+GMAIL_USER                          # For admin email invitations
+GMAIL_APP_PASSWORD                  # Gmail app password (16-digit)
+NEXT_PUBLIC_SITE_URL                # Base URL for email links
 ```
 
 ## Important Notes
 
 - User-facing content is in Mongolian; navigation/code in English
-- Admin routes (`/admin/*`) have no auth middleware - open access
+- Admin routes use Google OAuth with email whitelist (stored in `admin_users` table)
 - Remote images allowed from: unsplash.com, ui-avatars.com, res.cloudinary.com
 - Supabase RLS policies are permissive (allow all operations)

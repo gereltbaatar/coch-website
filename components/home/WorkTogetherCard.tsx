@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image"
+import Link from "next/link"
 import { WorkTogetherCardProps } from "./type"
 import { useLanguage } from "@/lib/LanguageContext";
 import { trWorkTogether } from "@/translations/home/trWorkTogether";
 
-export const WorkTogetherCard = ({ title, description, image }: WorkTogetherCardProps) => {
+export const WorkTogetherCard = ({ title, description, image, link = "/services" }: WorkTogetherCardProps) => {
     const { language } = useLanguage();
     const t = trWorkTogether[language];
 
@@ -27,9 +28,12 @@ export const WorkTogetherCard = ({ title, description, image }: WorkTogetherCard
             <div className="flex flex-col gap-4 mt-auto">
                 <h1 className="text-black text-3xl font-medium">{title}</h1>
                 <p className="text-gray-700 text-base font-normal leading-relaxed">{description}</p>
-                <button className="bg-main text-white text-base font-normal px-8 py-2.5 rounded-full transition-all duration-300 hover:bg-main/90 border border-main cursor-pointer transform w-fit mt-2">
+                <Link
+                    href={link}
+                    className="bg-main text-white text-base font-normal px-8 py-2.5 rounded-full transition-all duration-300 hover:bg-main/90 border border-main cursor-pointer transform w-fit mt-2"
+                >
                     {t.readMore}
-                </button>
+                </Link>
             </div>
         </div>
     )

@@ -1,3 +1,7 @@
 export * from "./ServiceSection"
 export * from "./ServicesHero"
+export * from "./ServiceDetailHero"
+export * from "./ServiceDetailContent"
+export * from "./TestimonialSection"
+export * from "./ProductsSection"
 export * from "./type"

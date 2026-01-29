@@ -5,7 +5,7 @@ export const trHeader = {
         services: "Үйлчилгээ",
         blog: "Блог",
         contact: "Холбоо барих",
-        freeProducts: "Үнэгүй бүтээгдэхүүн"
+        freeProducts: "Бүтээгдэхүүн"
     },
     en: {
         home: "Home",
@@ -13,6 +13,6 @@ export const trHeader = {
         services: "Services",
         blog: "Blog",
         contact: "Contact",
-        freeProducts: "Free Products"
+        freeProducts: "Products"
     }
 }

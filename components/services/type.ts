@@ -8,4 +8,5 @@ export type ServiceSectionProps = {
     backgroundColor: string;
     textColor: string;
     isReversed?: boolean;
+    link?: string;
 }
