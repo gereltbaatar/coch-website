@@ -20,7 +20,7 @@ export const ServiceDetailContent = ({
     whoIsItFor,
     benefits,
     pricing,
-    bookingLink = "/contact",
+    bookingLink = "/booking",
     accentColor
 }: ServiceDetailContentProps) => {
     return (
@@ -150,9 +150,6 @@ export const ServiceDetailContent = ({
                                     </span>
                                 </Link>
 
-                                <p className="text-center text-white/60 text-xs mt-4">
-                                    Үнэгүй зөвлөгөө авах боломжтой
-                                </p>
                             </div>
                         </div>
                     </div>

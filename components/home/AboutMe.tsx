@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLanguage } from "@/lib/LanguageContext";
 import { trAboutMe } from "@/translations/home/trAboutMe";
+import { motion } from "framer-motion";
 
 export const AboutMe = () => {
     const { language } = useLanguage();
@@ -22,17 +23,29 @@ export const AboutMe = () => {
             <div className="max-w-[1536px] w-full mx-auto px-5">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Left Side - Image */}
-                    <div className="relative w-full aspect-4/5 lg:aspect-square rounded-[2.5rem] overflow-hidden bg-secondary/20">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="relative w-full aspect-4/5 lg:aspect-square rounded-[2.5rem] overflow-hidden bg-secondary/20"
+                    >
                         <Image
                             src="/AboutMeImage.png"
                             alt="Uyanga - ICF-trained coach"
                             fill
                             className="object-cover"
                         />
-                    </div>
+                    </motion.div>
 
                     {/* Right Side - Content */}
-                    <div className="flex flex-col space-y-8">
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                        className="flex flex-col space-y-8"
+                    >
                         {/* Tag */}
                         <div>
                             <span className="inline-block px-6 py-2 rounded-full border border-main text-main text-sm font-medium tracking-wider uppercase">
@@ -43,7 +56,27 @@ export const AboutMe = () => {
                         {/* Headline */}
                         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light text-[#2a2a2a] leading-[1.1]">
                             {t.title1} <br />
-                            <span className="text-main italic">{t.title2}</span>
+                            <span className="relative inline-block text-main italic pb-2">
+                                {t.title2}
+                                <motion.svg
+                                    viewBox="0 0 300 12"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="absolute bottom-0 left-0 h-[10px]"
+                                    preserveAspectRatio="none"
+                                >
+                                    <motion.path
+                                        d="M2 8.5C20 3.5 60 2 100 4.5C140 7 180 5 220 3.5C260 2 285 6 298 8"
+                                        stroke="#e8b94a"
+                                        strokeWidth="7"
+                                        strokeLinecap="round"
+                                        initial={{ pathLength: 0 }}
+                                        whileInView={{ pathLength: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 1.2, delay: 0.6, ease: "easeInOut" }}
+                                    />
+                                </motion.svg>
+                            </span>
                         </h2>
 
                         {/* Description */}
@@ -55,7 +88,14 @@ export const AboutMe = () => {
                         {/* Features Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 pt-4">
                             {features.map((feature, index) => (
-                                <div key={index} className="flex items-center gap-3">
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                                    className="flex items-center gap-3"
+                                >
                                     <div className="shrink-0 w-6 h-6 rounded-full bg-main/10 flex items-center justify-center text-main">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -71,10 +111,10 @@ export const AboutMe = () => {
                                         </svg>
                                     </div>
                                     <span className="text-[#2a2a2a] font-medium">{feature}</span>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

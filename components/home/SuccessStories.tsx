@@ -4,6 +4,7 @@ import { SuccessStoriesCard } from "./SuccessStoriesCard"
 import { SuccessStoriesData } from "../mock/MockDatas"
 import { useLanguage } from "@/lib/LanguageContext"
 import { trSuccessStories } from "@/translations/home/trSuccessStories"
+import { motion } from "framer-motion"
 
 export const SuccessStories = () => {
     const { language } = useLanguage()
@@ -14,11 +15,23 @@ export const SuccessStories = () => {
             <div className="w-full mx-auto pb-12 sm:pb-16 lg:pb-24">
                 <div className="flex flex-col items-center gap-6 sm:gap-8">
 
-                    <div className="flex flex-col items-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        className="flex flex-col items-center"
+                    >
                         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-black tracking-wide text-center">{t.title1} <span className="text-main">{t.title2}</span></h2>
-                    </div>
+                    </motion.div>
 
-                    <div className="relative w-full overflow-hidden group">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="relative w-full overflow-hidden group"
+                    >
                         {/* Left Fade */}
                         <div className="absolute top-0 left-0 h-full w-16 sm:w-24 md:w-32 bg-linear-to-r from-secondary to-transparent z-10 pointer-events-none" />
 
@@ -47,7 +60,7 @@ export const SuccessStories = () => {
                                 />
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
 

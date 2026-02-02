@@ -1,7 +1,8 @@
 export const trSub = {
     mn: {
         subscribe: "Бидний",
-        toNewsletter: "мэдээллийн хуудас руу бүртгүүлэх",
+        toNewsletter: "мэдээллийн хуудас руу",
+        highlight: "бүртгүүлэх",
         description: "Цаг хэмнэх, бүтээмжээ нэмэгдүүлэх, бизнесээ илүү жигд явуулах зөвлөгөө авмаар байна уу? Долоо хоног бүрийн VA мэдлэг, хэрэгсэл, дэмжлэгийг имэйлээрээ хүлээн авахын тулд миний мэдээллийн хуудсанд нэгдээрэй!",
         subscribeNow: "ОДОО БҮРТГҮҮЛЭХ",
         menu: "Цэс",
@@ -14,7 +15,8 @@ export const trSub = {
     },
     en: {
         subscribe: "Subscribe",
-        toNewsletter: "To Our Newsletter",
+        toNewsletter: "To Our",
+        highlight: "Newsletter",
         description: "Want tips to save time, boost productivity, and run your business smoother? Join my newsletter for weekly VA insights, tools, and support—straight to your inbox!",
         subscribeNow: "SUBSCRIBE NOW",
         menu: "Menu",

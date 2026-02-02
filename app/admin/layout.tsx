@@ -11,6 +11,7 @@ import {
     LogOut,
     UserCircle,
     Settings,
+    CalendarDays,
 } from "lucide-react"
 import Image from "next/image"
 import AuthGuard from "@/components/admin/AuthGuard"
@@ -57,6 +58,7 @@ export default function AdminLayout({
     const menuItems = [
         { icon: FileText, label: "Blog", href: "/admin/blog" },
         { icon: ShoppingBag, label: "Products", href: "/admin/product" },
+        { icon: CalendarDays, label: "Цаг захиалга", href: "/admin/booking" },
         { icon: Settings, label: "Админ удирдлага", href: "/admin/users" },
     ]
 

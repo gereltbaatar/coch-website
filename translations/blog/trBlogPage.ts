@@ -7,7 +7,7 @@ export const trBlogPage = {
         heroDescription: "Хувийн хөгжил, эрүүл мэнд, амьдралаа хамгийн сайнаар амьдрах тухай мэдлэг, зөвлөгөө, түүхүүдийг нээж мэдээрэй.",
 
         // AllBlogs
-        allBlogs: "Бүх блогууд",
+        allBlogs: "БҮХ БЛОГУУД",
         all: "Бүгд",
         noPostsFound: "Энэ ангилалд нийтлэл олдсонгүй.",
 
@@ -22,7 +22,7 @@ export const trBlogPage = {
         heroDescription: "Discover insights, tips, and stories about personal growth, wellness, and living your best life.",
 
         // AllBlogs
-        allBlogs: "All Blogs",
+        allBlogs: "ALL BLOGS",
         all: "All",
         noPostsFound: "No posts found in this category.",
 

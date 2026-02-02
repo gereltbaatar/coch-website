@@ -84,7 +84,7 @@ export const ProductList = () => {
                 <div className="flex items-center gap-6">
                     <button className="text-xs font-semibold tracking-widest text-black hover:text-black/60 transition-colors uppercase">
                         <div className="flex items-center gap-3">
-                            <p className="text-2xl font-semibold text-gray-800">{t.allProducts}</p>
+                            <p className="text-2xl font-semibold text-gray-800 text-uppercase">{t.allProducts}</p>
                             <svg
                                 className="w-6 h-6 text-gray-800"
                                 fill="none"
@@ -123,11 +123,10 @@ export const ProductList = () => {
                                     observerRef.current.observe(el)
                                 }
                             }}
-                            className={`transition-all duration-700 ease-out ${
-                                visibleCards.has(product.id)
-                                    ? 'opacity-100 translate-y-0'
-                                    : 'opacity-0 translate-y-12'
-                            }`}
+                            className={`transition-all duration-700 ease-out ${visibleCards.has(product.id)
+                                ? 'opacity-100 translate-y-0'
+                                : 'opacity-0 translate-y-12'
+                                }`}
                             style={{
                                 transitionDelay: visibleCards.has(product.id) ? `${index % 4 * 100}ms` : '0ms'
                             }}

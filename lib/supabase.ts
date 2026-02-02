@@ -110,6 +110,26 @@ export interface Product {
     updated_at: string
 }
 
+// Booking available date type
+export interface BookingDate {
+    id: string
+    date: string // YYYY-MM-DD format
+    created_at: string
+}
+
+// Booking request type
+export interface BookingRequest {
+    id: string
+    name: string
+    phone: string
+    email: string
+    date: string
+    service_type: string // "1:1" | "group" | "corporate"
+    message: string
+    status: 'new' | 'contacted' | 'completed' | 'cancelled'
+    created_at: string
+}
+
 // Helper function to calculate reading time from HTML content
 export const calculateReadingTimeFromHtml = (htmlContent: string): number => {
     const wordsPerMinute = 200

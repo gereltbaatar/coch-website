@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { useState, useRef } from "react"
 import { useLanguage } from "@/lib/LanguageContext"
 import { trSub } from "@/translations/home/trSub"
+import { motion } from "framer-motion"
 
 export const Sub = () => {
     const router = useRouter()
@@ -49,12 +50,36 @@ export const Sub = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex-1 flex flex-col">
 
                 <div className="flex-1 flex flex-col items-center justify-center text-center w-full max-w-4xl mx-auto pt-20 pb-10">
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-2 flex-wrap mb-6">
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-black leading-tight">
+                    <div className="flex flex-col items-center justify-center mb-6">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-black leading-tight text-center">
                             {t.subscribe}
                         </h2>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight">
-                            <span className="text-main">{t.toNewsletter}</span>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide leading-tight text-center">
+                            <span className="text-main">{t.toNewsletter} </span>
+                            <span className="relative inline-block text-main">
+                                {t.highlight}
+                                <motion.svg
+                                    viewBox="0 0 200 80"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="absolute -top-[35%] -left-[8%] w-[116%] h-[170%] pointer-events-none"
+                                >
+                                    <motion.ellipse
+                                        cx="100"
+                                        cy="40"
+                                        rx="110"
+                                        ry="30"
+                                        stroke="#e8b94a"
+                                        strokeWidth="4"
+                                        strokeLinecap="round"
+                                        fill="none"
+                                        initial={{ pathLength: 0 }}
+                                        whileInView={{ pathLength: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 1.4, delay: 0.5, ease: "easeInOut" }}
+                                    />
+                                </motion.svg>
+                            </span>
                         </h2>
                     </div>
 

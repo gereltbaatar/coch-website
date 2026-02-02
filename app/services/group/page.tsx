@@ -44,7 +44,7 @@ const GroupCoachingPage = () => {
         ],
         pricing: {
             price: "₮350,000",
-            duration: "сар бүр",
+            duration: "",
             includes: [
                 "2 удаагийн групп уулзалт",
                 "Community хандалт",
@@ -52,7 +52,8 @@ const GroupCoachingPage = () => {
                 "Guest expert сешн"
             ]
         },
-        accentColor
+        accentColor,
+        bookingLink: "/booking?service=group"
     }
 
     const testimonials: TestimonialData[] = [

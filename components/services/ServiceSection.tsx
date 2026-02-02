@@ -3,6 +3,8 @@
 import { ServiceSectionProps } from "./type"
 import Image from "next/image"
 import Link from "next/link"
+import { useLanguage } from "@/lib/LanguageContext"
+import { trServiceSection } from "@/translations/services/trServiceSection"
 
 export const ServiceSection = ({
     title,
@@ -11,6 +13,9 @@ export const ServiceSection = ({
     image,
     link
 }: ServiceSectionProps) => {
+    const { language } = useLanguage()
+    const t = trServiceSection[language]
+
     return (
         <section className="w-full">
             <div className="grid grid-cols-1 sm:grid-cols-2 min-h-[450px] border border-main rounded-4xl overflow-hidden">
@@ -36,10 +41,9 @@ export const ServiceSection = ({
                             {description}
                         </p>
 
-                        {/* Хэнд зориулсан бэ */}
                         {whoIsItFor && whoIsItFor.length > 0 && (
                             <div className="mt-2">
-                                <h3 className="text-black text-base sm:text-lg font-medium mb-2">Хэнд зориулсан бэ?</h3>
+                                <h3 className="text-black text-base sm:text-lg font-medium mb-2">{t.whoIsItFor}</h3>
                                 <ul className="text-gray-700 text-sm sm:text-base font-normal leading-relaxed space-y-1">
                                     {whoIsItFor.map((item, index) => (
                                         <li key={index} className="flex items-start gap-2">
@@ -55,7 +59,7 @@ export const ServiceSection = ({
                             href={link || "#"}
                             className="bg-main text-white text-sm sm:text-base font-normal px-6 sm:px-8 py-2.5 rounded-full transition-all duration-300 hover:bg-main/90 border border-main cursor-pointer transform w-fit mt-2"
                         >
-                            Дэлгэрэнгүй
+                            {t.details}
                         </Link>
                     </div>
                 </div>

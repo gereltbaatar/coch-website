@@ -5,7 +5,7 @@ import { TestimonialData } from "@/components/services/TestimonialSection"
 import { Footer } from "@/components/navigation"
 
 const CorporateTrainingPage = () => {
-    const accentColor = "#2a2a2a"
+    const accentColor = "#8a8e75"
 
     const heroData = {
         title: "Corporate Training & Workshops",
@@ -44,7 +44,7 @@ const CorporateTrainingPage = () => {
         ],
         pricing: {
             price: "Үнийн санал",
-            duration: "байгууллагаас хамаарна",
+            duration: "",
             includes: [
                 "Customized хөтөлбөр",
                 "Материал, хэрэгсэл",
@@ -52,7 +52,8 @@ const CorporateTrainingPage = () => {
                 "Гэрчилгээ олгоно"
             ]
         },
-        accentColor
+        accentColor,
+        bookingLink: "/booking?service=corporate"
     }
 
     const testimonials: TestimonialData[] = [

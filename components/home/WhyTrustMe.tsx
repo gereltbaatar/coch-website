@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react"
 import CountUp from "react-countup"
 import { useLanguage } from "@/lib/LanguageContext"
 import { trWhyTrustMe } from "@/translations/home/trWhyTrustMe"
+import { motion } from "framer-motion"
 
 export const WhyTrustMe = () => {
     const [startCount, setStartCount] = useState(false)
@@ -43,7 +44,13 @@ export const WhyTrustMe = () => {
             <Image src="/WhyTrustMeTwo.png" alt="Uyanga" fill objectFit="cover" className="object-center" />
             <div className="absolute inset-0 flex flex-col lg:grid lg:grid-cols-2">
                 {/* Left Side - Stats */}
-                <div className="flex items-center justify-center p-6 sm:p-8 lg:p-12">
+                <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="flex items-center justify-center p-6 sm:p-8 lg:p-12"
+                >
                     <div ref={statsRef} className="max-w-md space-y-8 sm:space-y-12 w-full">
                         {/* Title */}
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-light text-black tracking-wide">
@@ -87,10 +94,16 @@ export const WhyTrustMe = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 {/* Right Side */}
-                <div className="flex items-center justify-center p-6 sm:p-8 lg:p-12">
+                <motion.div
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                    className="flex items-center justify-center p-6 sm:p-8 lg:p-12"
+                >
                     <div className="flex flex-col max-w-[400px] w-full bg-main/90 rounded-3xl p-6 sm:p-8 lg:p-14 gap-4 sm:gap-6">
                         <div className="space-y-2">
                             <p className="text-lg sm:text-xl font-medium text-white">{t.certifiedExpertise}</p>
@@ -107,7 +120,7 @@ export const WhyTrustMe = () => {
                             <p className="text-sm sm:text-base font-light text-white/90 leading-relaxed">{t.rewardingResultsDesc}</p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     )

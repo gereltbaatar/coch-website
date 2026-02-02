@@ -5,7 +5,7 @@ import { TestimonialData } from "@/components/services/TestimonialSection"
 import { Footer } from "@/components/navigation"
 
 const OneToOneCoachingPage = () => {
-    const accentColor = "#c4a99b"
+    const accentColor = "#8a8e75"
 
     const heroData = {
         title: "1:1 Coaching",
@@ -44,7 +44,7 @@ const OneToOneCoachingPage = () => {
         ],
         pricing: {
             price: "₮750,000",
-            duration: "сар бүр",
+            duration: "",
             includes: [
                 "4 удаагийн 1:1 уулзалт",
                 "Тасралтгүй дэмжлэг",
@@ -52,7 +52,8 @@ const OneToOneCoachingPage = () => {
                 "Прогресс үнэлгээ"
             ]
         },
-        accentColor
+        accentColor,
+        bookingLink: "/booking?service=1:1"
     }
 
     const testimonials: TestimonialData[] = [

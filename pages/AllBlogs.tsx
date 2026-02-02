@@ -114,7 +114,7 @@ const AllBlogs = () => {
                 <div className="max-w-[1536px] mx-auto flex justify-center">
                     <div className="w-full flex items-center justify-between">
                         <div className="flex items-center gap-3">
-                            <p className="text-2xl font-semibold text-gray-800">{t.allBlogs}</p>
+                            <p className="text-2xl font-semibold text-gray-800 text-uppercase">{t.allBlogs}</p>
                             <svg
                                 className="w-6 h-6 text-gray-800"
                                 fill="none"
@@ -171,11 +171,10 @@ const AllBlogs = () => {
                                             observerRef.current.observe(el)
                                         }
                                     }}
-                                    className={`transition-all duration-700 ease-out ${
-                                        visibleCards.has(blog.id)
-                                            ? 'opacity-100 translate-y-0'
-                                            : 'opacity-0 translate-y-12'
-                                    }`}
+                                    className={`transition-all duration-700 ease-out ${visibleCards.has(blog.id)
+                                        ? 'opacity-100 translate-y-0'
+                                        : 'opacity-0 translate-y-12'
+                                        }`}
                                     style={{
                                         transitionDelay: visibleCards.has(blog.id) ? `${index % 4 * 100}ms` : '0ms'
                                     }}
